@@ -16,7 +16,7 @@ try {
 } catch (e) {}
 </script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=402,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0d2b31">
 <title>Zain Syria — A Wonderful World</title>
 <style>
@@ -157,7 +157,7 @@ html,body{height:100%}
 body{background:#0b1416;font-family:var(--font);-webkit-font-smoothing:antialiased;overflow:hidden;
   display:flex;align-items:center;justify-content:center;transition:background-color .4s ease}
 body.standalone{display:block}
-#stage{width:390px;height:844px;position:relative;overflow:hidden;flex:none;
+#stage{width:402px;height:874px;position:relative;overflow:hidden;flex:none;
   background:var(--hero);color:var(--ink);transform-origin:center center;isolation:isolate}
 body:not(.standalone) #stage{border-radius:44px;box-shadow:0 40px 120px rgba(0,0,0,.45)}
 body.standalone #stage{width:100vw;height:100dvh;border-radius:0}
@@ -345,6 +345,11 @@ input{caret-color:var(--btn-bg)}
 .bundle .bt .t{font-size:var(--f-head);font-weight:800}
 .bundle .bt .d{font-size:var(--f-cap);color:var(--ink-soft);margin-top:2px}
 .bundle .bp{text-align:end}
+.bundle .bhero{text-align:start;flex:none}
+.bundle .bwm{position:absolute;inset:0;overflow:hidden;border-radius:inherit;pointer-events:none;z-index:0}
+.bundle .bwm img{position:absolute;inset-inline-end:-10px;top:50%;width:120px;height:120px;transform:translateY(-50%) rotate(-14deg);opacity:.16;display:block;-webkit-mask-image:linear-gradient(to left, black 40%, transparent 90%);mask-image:linear-gradient(to left, black 40%, transparent 90%)}
+#stage[dir="rtl"] .bundle .bwm img{-webkit-mask-image:linear-gradient(to right, black 40%, transparent 90%);mask-image:linear-gradient(to right, black 40%, transparent 90%)}
+.bundle .bwm ~ .bp,.bundle .bwm ~ .bt{position:relative;z-index:1}
 .bundle .bp .p{font-size:19px;font-weight:800;white-space:nowrap}
 .bundle .bp .u{font-size:var(--f-cap);color:var(--ink-faint)}
 /* bundle tag = official Zain circle pull-out (ZN_PULLOUTS.ai, guideline p.87):
@@ -407,8 +412,8 @@ input{caret-color:var(--btn-bg)}
 .fslider input[type="range"]{width:100%;-webkit-appearance:none;appearance:none;height:8px;border-radius:99px;background:rgba(0,0,0,.28);outline:none}
 #stage[data-theme="dark"] .fslider input[type="range"]{background:rgba(255,255,255,.35)}
 #stage[data-theme="dark"] .fslider input[type="range"]::-moz-range-track{background:rgba(255,255,255,.35)}
-.fslider input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:28px;height:28px;border-radius:50%;background:var(--btn-bg);border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.3);cursor:pointer}
-.fslider input[type="range"]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:var(--btn-bg);border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.3);cursor:pointer}
+.fslider input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:28px;height:28px;border-radius:50%;background:var(--btn-bg);border:2px solid #fff;box-shadow:none;cursor:pointer}
+.fslider input[type="range"]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:var(--btn-bg);border:2px solid #fff;box-shadow:none;cursor:pointer}
 .fslider input[type="range"]::-moz-range-track{height:8px;border-radius:99px;background:rgba(0,0,0,.28)}
 .fends{display:flex;justify-content:space-between;font-size:var(--f-micro);color:var(--ink-soft);margin-top:6px}
 .fpanel{background:var(--glass);border:1px solid var(--glass-brd);border-radius:var(--r-lg);padding:16px;margin-bottom:12px}
@@ -419,6 +424,27 @@ input{caret-color:var(--btn-bg)}
 .fbandchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .fbandchips .chip{min-height:40px;padding:0 14px;border-radius:99px;background:var(--glass-deep);border:1px solid var(--glass-brd);color:var(--ink);font-size:var(--f-cap);font-weight:800}
 .fbandchips .chip.on{background:var(--btn-bg);color:var(--btn-fg);border-color:transparent}
+.fbar{background:var(--glass);border:1px solid var(--glass-brd);border-radius:var(--r-lg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 12px 32px rgba(0,0,0,.12);padding:10px 12px;margin-bottom:18px}
+.fbar-row{display:flex;gap:8px}
+.ficon{flex:1;height:64px;border-radius:18px;display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center;color:var(--ink);background:var(--glass-deep);border:1px solid var(--glass-brd);box-shadow:0 2px 8px rgba(0,0,0,.08);transition:background .3s ease,color .3s ease,transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease;cursor:pointer}
+.ficon svg{width:22px;height:22px}
+.ficon span{font-size:var(--f-cap);font-weight:700;line-height:1.2}
+.ficon.on{background:var(--btn-bg);color:var(--btn-fg);border-color:transparent;box-shadow:0 6px 16px rgba(0,0,0,.22);transform:scale(1.02)}
+.ficon:active{transform:scale(.92)}
+.fpanel2{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .45s cubic-bezier(.22,1,.36,1),opacity .3s ease}
+.fpanel2.on{grid-template-rows:1fr;opacity:1}
+.fpanel2-in{overflow:hidden;min-height:0;transform:translateY(6px);transition:transform .4s cubic-bezier(.22,1,.36,1)}
+.fpanel2.on .fpanel2-in{transform:translateY(0)}
+.fpanel2 .fbandchips{margin-top:12px}
+.fpanel2 .fslider2{margin-top:14px}
+.fslider2{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:99px;outline:none;cursor:pointer;background:linear-gradient(to right,var(--btn-bg) var(--fill,100%),rgba(0,0,0,.28) var(--fill,100%))}
+#stage[data-theme="dark"] .fslider2{background:linear-gradient(to right,var(--btn-bg) var(--fill,100%),rgba(255,255,255,.35) var(--fill,100%))}
+#stage[dir="rtl"] .fslider2{background:linear-gradient(to left,var(--btn-bg) var(--fill,100%),rgba(0,0,0,.28) var(--fill,100%))}
+#stage[dir="rtl"][data-theme="dark"] .fslider2{background:linear-gradient(to left,var(--btn-bg) var(--fill,100%),rgba(255,255,255,.35) var(--fill,100%))}
+.fslider2::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:28px;height:28px;border-radius:50%;background:var(--btn-bg);border:2px solid #fff;cursor:pointer}
+.fslider2::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:var(--btn-bg);border:2px solid #fff;cursor:pointer}
+.fslider2::-moz-range-track{height:8px;border-radius:99px;background:rgba(0,0,0,.28)}
+.fslider2::-moz-range-progress{height:8px;border-radius:99px;background:var(--btn-bg)}
 .bundle.best{box-shadow:0 0 0 2px var(--btn-bg),0 12px 32px rgba(0,0,0,.12)}
 .fbtnrow{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
 .fbtnrow .btn{flex:1}
@@ -515,8 +541,21 @@ body:not(.perf-lite) #stage.focus #patlayer{filter:blur(5px) brightness(.97)}
   box-shadow:0 24px 64px rgba(0,0,0,.3);padding:22px;max-height:76%;overflow-y:auto;
   display:flex;flex-direction:column;gap:12px;opacity:0;visibility:hidden}
 .sheet.on{opacity:1;visibility:visible;will-change:transform}
-.sheet .grab{width:100%;height:28px;margin:-10px 0 -8px;display:flex;align-items:center;justify-content:center;flex:none;touch-action:none;cursor:grab}
-.sheet .grab::before{content:'';width:44px;height:5px;border-radius:99px;background:var(--ink-faint)}
+#sh-bundle, #sh-hist{max-height:calc(100% - 24px - env(safe-area-inset-bottom));scrollbar-width:none;padding:18px 22px}
+#sh-bundle #bundle-body{display:flex;flex-direction:column;gap:12px}
+#sh-bundle #bundle-body > .micro{margin-top:4px;margin-bottom:-4px}
+#sh-bundle #bundle-body > div .micro{margin-bottom:8px}
+#sh-bundle .bpop-row{padding:8px 0}
+#sh-bundle .srow{margin-top:0}
+#sh-bundle::-webkit-scrollbar, #sh-hist::-webkit-scrollbar{display:none}
+#sh-hist #hist-body{display:flex;flex-direction:column;gap:12px}
+#sh-hist #hist-body > .micro{margin-top:4px;margin-bottom:-4px}
+#sh-hist .bpop-row{padding:8px 0}
+#sh-hist .srow{margin-top:0}
+#sh-bundle .sharebtn:disabled{opacity:.45}
+.sheet .grab{position:relative;width:100%;height:28px;margin:-10px 0 -8px;flex:none;touch-action:none;cursor:grab}
+.sheet .grab::before{content:'';position:absolute;left:50%;top:50%;width:32px;height:18px;transform:translate(-50%,-50%);background:var(--ink-faint);-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 18'%3E%3Cpath d='M1.7 1.7 L16 16.3 L30.3 1.7' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");-webkit-mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 18'%3E%3Cpath d='M1.7 1.7 L16 16.3 L30.3 1.7' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");mask-size:100% 100%;mask-repeat:no-repeat}
+
 .sheet .grab:active{cursor:grabbing}
 #stage[dir="rtl"] .ubar .fl,#stage[dir="rtl"] .tier .fl{transform-origin:right center}
 .sheet{transition:max-height .55s cubic-bezier(.32,.72,.24,1)}
@@ -591,7 +630,7 @@ body.perf-lite #stage[data-theme="dark"]{--glass:rgba(4,30,35,.9);--glass-deep:r
 #scr-login .auth-top{min-height:44px;margin-top:calc(4px + env(safe-area-inset-top))}
 #scr-login .auth-links .linklike{min-height:34px}
 
-/* hub fit trims (390x844 stage, no scroll on the sign-in hub) */
+/* hub fit trims (402x874 stage, no scroll on the sign-in hub) */
 #scr-login{padding-bottom:10px}
 #scr-login .auth-top{min-height:40px;margin-top:calc(2px + env(safe-area-inset-top))}
 #scr-login h1.title{margin-top:6px}
@@ -1548,6 +1587,13 @@ body.perf-lite .u-shade-bg{backdrop-filter:none;-webkit-backdrop-filter:none}
 .uc-frow{justify-content:center}
 .uc-frow .uc-all{flex:none}
 
+
+/* ============ FIGMA IMPORT (v61-figma): fixed 402x874, page IS the app ============ */
+html,body{width:100%!important;height:auto!important;min-height:100vh;margin:0!important;overflow:auto!important}
+body{display:flex!important;justify-content:center!important;align-items:safe center!important}
+#stage{width:402px!important;height:874px!important;transform:none!important}
+body:not(.standalone) #stage{border-radius:0!important;box-shadow:none!important}
+body.standalone #stage{width:402px!important;height:874px!important;border-radius:0!important}
 </style>
 </head>
 <body>
@@ -1944,7 +1990,7 @@ body.perf-lite .u-shade-bg{backdrop-filter:none;-webkit-backdrop-filter:none}
 
 <section id="app" class="screen" aria-label="Zain app">
   <header id="appbar">
-    <img decoding="async" class="logo" id="app-logo" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNy40LjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iWmFpbl9Mb2dvX0JsYWNrIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiDQoJIHk9IjBweCIgdmlld0JveD0iMCAwIDg0MS44OSA1OTUuMjgiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDg0MS44OSA1OTUuMjg7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGQ9Ik01NjEuOTQsMzU5LjA0di04MS40NWMwLTYuMzUtMS42OC0xMC42NC00LjgtMTMuOGMtMy4zNC0zLjM4LTguMjctNS4yMS0xNC4yLTUuMjFjLTAuNDUsMC0xLjAzLDAtMS40NiwwLjA2djgxLjQ1DQoJYzAsNi4zLDEuNjYsMTAuNjIsNC44LDEzLjc3YzMuMywzLjM2LDguMjcsNS4yMiwxNC4xNiw1LjIyQzU2MC45LDM1OS4wOCw1NjEuNDUsMzU5LjA4LDU2MS45NCwzNTkuMDRMNTYxLjk0LDM1OS4wNHoNCgkgTTU2My44MSwyMzguODZjMC02LjY1LTUuNDItMTIuMDYtMTIuMS0xMi4wNmMtNi42NywwLTEyLjA5LDUuNDEtMTIuMDksMTIuMDZjMCw2LjcsNS40MiwxMi4xMywxMi4wOSwxMi4xMw0KCUM1NTguMzksMjUwLjk5LDU2My44MSwyNDUuNTUsNTYzLjgxLDIzOC44Nkw1NjMuODEsMjM4Ljg2eiBNNTAyLjQ4LDMxOS41N3YyMC41MmMwLDYuMywxLjY2LDEwLjYyLDQuODIsMTMuNzcNCgljMy4zMSwzLjM2LDguMyw1LjIyLDE0LjE5LDUuMjJjMC40OCwwLDEuMDEsMCwxLjQ5LTAuMDR2LTQzLjc2YzAtMTguODMtNS4xMy0zMS41LTE0LjI3LTQxLjM2Yy05LjQxLTEwLjEyLTIzLjQ5LTE1Ljk4LTM5Ljc4LTE1Ljk4DQoJYy0zMS4yNywwLTUyLjkzLDIyLjg5LTUyLjkzLDUyLjcxYzAsMjkuMywyMC4wNiw0OC44NSw0Ni4wOCw0OC44NWMyMC4wNiwwLDMyLjExLTExLjkzLDMyLjExLTI1LjkyYzAtNS4yMi0xLjY0LTEwLjgyLTUuMjEtMTYuMTQNCgljLTIuODksMTUuMDQtMTEuMjEsMjMuMzEtMjQuNiwyMy4zMWMtMTQuMywwLTI2Ljg4LTEwLjg1LTI2Ljg4LTMwLjYyYzAtMTkuNDQsMTIuNjEtMzIuNzMsMzEuNS0zMi43M2M5LjQ2LDAsMTcuMDYsMy4zLDIyLjgxLDguOTUNCglDNDk4LjU0LDI5My4wNiw1MDIuNDgsMzAzLjMzLDUwMi40OCwzMTkuNTdMNTAyLjQ4LDMxOS41N3ogTTY2Mi4zNSwzMzIuMTRjLTAuMjMsMC0wLjQyLTAuMTMtMC42Mi0wLjM5DQoJYy0xNC42OS0xOS4xMy00MS42Ny01NC4zOS00Ny41Mi02Mi4wOWMtNi4xOS04LjA1LTExLjAzLTEwLjctMTcuNDMtMTAuN2MtNC43MywwLTguNTUsMS43NC0xMS4xOCw0LjUzDQoJYy0yLjk0LDMuMTQtNC40MSw4LTQuNDEsMTMuNTJ2NjMuMDhjMCw2LjMsMS42MywxMC42Miw0LjgsMTMuNzdjMy4zMywzLjM2LDguMDgsNS4yMiwxMy44NCw1LjIyYzAuNDUsMCwwLjc1LDAsMS4xNi0wLjA0di03Mi4zMg0KCWMwLTAuNTIsMC4yMy0wLjgxLDAuNTgtMC44MWMwLjI2LDAsMC40MiwwLjEyLDAuNjIsMC40MmM4LjYyLDExLjIxLDQxLjMyLDUzLjk3LDQ3LjU4LDYyLjAxYzYuMTksOC4wNCwxMS4wMSwxMC43NSwxNy4zNywxMC43NQ0KCWM0Ljc2LDAsOC41OS0xLjcyLDExLjE5LTQuNWMyLjkyLTMuMTUsNC40Mi03Ljk1LDQuNDItMTMuNTJ2LTYzLjFjMC02LjMtMS42OC0xMC42My00LjgyLTEzLjgyYy0zLjM0LTMuMzMtOC4wNS01LjE4LTEzLjg3LTUuMTgNCgljLTAuNCwwLTAuNzEsMC0xLjE0LDAuMDN2NzIuMzdDNjYyLjkzLDMzMS44OCw2NjIuNjksMzMyLjE0LDY2Mi4zNSwzMzIuMTRMNjYyLjM1LDMzMi4xNHogTTM0MC4yMSwzMzkuNjkNCgljLTAuODEsMC0xLjI3LTAuMjctMS4yNy0wLjgxYzAtMC4yOSwwLjIzLTAuNjUsMC42OS0xLjAxYzYuMjktNS4wOSw0Ny45LTM4LjY2LDU0LjI1LTQzLjg4YzExLjAzLTguODgsMTMuMzUtMTMuMjIsMTMuMzUtMTkuNTINCgljMC0zLjkzLTEuODQtNy43Mi00LjYxLTEwLjA0Yy0zLjM0LTIuODMtOC4zMy00LjM3LTE2LjQtNC4zN2gtNzAuODhjMCwwLjM1LDAsMC43NSwwLDEuMTNjMCwzLjY3LDAuOCw3LjY3LDIuNjIsMTAuMw0KCWMyLjg2LDQuMTEsOC4yNyw2LjQ4LDE1LjU4LDYuNDhoNDYuNTJjMC44MiwwLDEuMjcsMC4yNSwxLjI3LDAuNjdjMCwwLjM2LTAuMiwwLjYxLTAuNzIsMWMtNi41OCw1LjM0LTQ0Ljk5LDM2LjMzLTU0LjU3LDQzLjk4DQoJYy0xMS4wNiw4Ljg4LTEzLjI2LDEzLjMtMTMuMjYsMTkuNmMwLDMuOTEsMS44NSw3LjY5LDQuNjMsOS45OWMzLjM0LDIuODUsOC4zNCw0LjQxLDE2LjQ0LDQuNDFoNzQuMTNjMC0wLjMsMC0wLjQ4LDAtMC43MQ0KCWMwLTUuMjYtMS40OS05Ljc5LTQuNjQtMTIuNjVjLTMuNjItMy4zNC04LjMtNC41Ni0xNy4wOC00LjU2SDM0MC4yMUwzNDAuMjEsMzM5LjY5eiIvPg0KPHBhdGggZD0iTTI2Ni4zLDI3OS41N2MwLTExLjgtOS4wOC0yMC43NC0yMi4wNC0xOS43NGMtMjcuNSwyLjExLTMxLjA1LDMzLjM5LTEzLjE1LDM1LjM5YzE4LjcxLDIuMDksMjUuNDEtMTcuNywyNS43Ny0xOC44MQ0KCWMwLTAuMDEsMC4wMi0wLjAxLDAuMDIsMGMwLjA0LDEuMzQsMS4wNCwyOC41Ny0yNi43MywyOC41N2MtMTQuNDMsMC0yMS44Ni0xMS43OS0yMS44Ni0yMi4wMWMwLTE1LjE1LDE0Ljc0LTMwLjIyLDM1LjUzLTMxLjAyDQoJYzExLjY1LTAuNDUsMTkuMzIsMi4zLDI1LjMzLDguMzFjMTIuMjUsMTIuMjUsOC43MiwzNS4yMi0xLjE5LDQ2LjU2Yy0xNS43NCwxOC0zNy44NiwyMi41OC01OC40NywxMy4zNHMtMjgtMzYtMTUuNTEtNTguMzkNCgljNC41OS04LjIzLDIxLjI4LTI2LjU4LDQ5Ljk1LTI2LjU4YzM2LjQsMCw1NC44NiwyNS44LDUxLjUzLDU2LjExYy0yLjU1LDIzLjIyLTE2LjY2LDQwLjA1LTIzLjIsNDcuMTUNCgljLTI4LjczLDMxLjIzLTcwLjk2LDM3LjQ1LTk3LjU2LDIxLjIxYy0xNC42NC04Ljk0LTIzLjE2LTI0Ljk4LTIxLjI3LTQzLjE0YzEuNjIsMTMuMTEsOC4xNiwyNC40NiwxOS4wNCwzMS44Nw0KCWMyMS43NSwxNC44Myw1OC4xMSwxNi44Nyw4NC40LTEyLjA0Yy0yNi40MiwxOS43My01Ny4yOCwxOS40NC03OC4zNiw1LjdjLTE5LjM0LTEyLjYtMjQuNjYtMzcuNzUtMTUuMTktNjIuNjMNCgljLTQuNzUsMjIuMTgsMi44OCw0Mi43NCwxOS42Niw1My40NmMyNi4xNSwxNi43LDY0LjI0LDcuMSw4OC4yNC0xOS44YzguMTgtOS4xNywxMi44Ny0yMS41MywxMi43Mi0zMi44MQ0KCWMtMC4yNS0xOC44MS0xMy4zNi0zNS43LTM5LjgzLTM1LjdjLTI3LjE3LDAtNDUuODMsMjEtNDUuODMsMzguNDhjMCwxOS40LDEzLjMyLDMwLjQ4LDMwLjY5LDMwLjQ4DQoJQzI0Ni4xNywzMTMuNTQsMjY2LjMsMzAyLjcsMjY2LjMsMjc5LjU3eiIvPg0KPC9zdmc+DQo=" alt="Zain" width="74">
+    
     <span class="sp"></span>
     <button class="icobtn" id="btn-num" aria-haspopup="true" aria-expanded="false" aria-label="Your lines">
       <img decoding="async" src="data:image/svg+xml,%3Csvg%20fill%3D%22%23FFFFFF%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20width%3D%221080%22%20height%3D%221080%22%20viewBox%3D%220%200%201080%201080%22%3E%0A%3Cdefs%3E%0A%3CclipPath%20id%3D%22clip_1%22%3E%0A%3Cpath%20transform%3D%22matrix%281%2C0%2C0%2C-1%2C0%2C1080%29%22%20d%3D%22M0%201080H1080V0H0Z%22%2F%3E%0A%3C%2FclipPath%3E%0A%3C%2Fdefs%3E%0A%3Cg%3E%0A%3Cg%20clip-path%3D%22url%28%23clip_1%29%22%3E%0A%3Cpath%20transform%3D%22matrix%281%2C0%2C0%2C-1%2C708.8019%2C740.7429%29%22%20d%3D%22M0%200C0-1.224-.469-2.371-1.329-3.231-2.189-4.09-3.336-4.559-4.559-4.559H-333.044C-334.268-4.559-335.415-4.09-336.275-3.231-337.134-2.371-337.603-1.224-337.603%200V401.486C-337.603%20402.71-337.134%20403.857-336.275%20404.717-335.415%20405.576-334.268%20406.045-333.044%20406.045H-119.717L0%20286.303ZM23.369%20301.675-104.372%20429.415C-106.951%20431.968-110.416%20433.428-114.063%20433.428H-333.044C-341.511%20433.428-349.64%20430.067-355.632%20424.074-361.625%20418.082-364.986%20409.953-364.986%20401.486V0C-364.986-8.467-361.625-16.596-355.632-22.588-349.64-28.581-341.511-31.942-333.044-31.942H-4.559C3.908-31.942%2012.036-28.581%2018.029-22.588%2024.021-16.596%2027.382-8.467%2027.382%200V291.983C27.382%20295.63%2025.949%20299.095%2023.369%20301.675%22%2F%3E%0A%3Cpath%20transform%3D%22matrix%281%2C0%2C0%2C-1%2C635.8252%2C672.3%29%22%20d%3D%22M0%200H-45.646V68.521C-45.646%2076.988-47.861%2082.694-52.03%2086.915-56.458%2091.448-63.076%2093.897-70.996%2093.897-71.595%2093.897-72.351%2093.897-72.923%2093.819V0H-118.726V68.521C-118.726%2076.988-120.941%2082.694-125.109%2086.915-129.564%2091.448-136.157%2093.897-144.077%2093.897-144.675%2093.897-145.431%2093.897-146.004%2093.819V0H-191.624V136.859H0ZM23.344%20160.23C20.791%20162.783%2017.3%20164.242%2013.678%20164.242H-205.329C-208.95%20164.242-212.441%20162.783-214.994%20160.23-217.574%20157.65-219.007%20154.185-219.007%20150.538V-13.704C-219.007-17.326-217.574-20.817-214.994-23.37-212.441-25.949-208.95-27.382-205.329-27.382H13.678C17.3-27.382%2020.791-25.949%2023.344-23.37%2025.923-20.817%2027.356-17.326%2027.356-13.704V150.538C27.356%20154.185%2025.923%20157.65%2023.344%20160.23%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A" alt="" width="32" height="32" id="num-ic">
@@ -1992,7 +2038,7 @@ body.perf-lite .u-shade-bg{backdrop-filter:none;-webkit-backdrop-filter:none}
     </section>
 
     <section id="tab-bundles" class="scroll" data-tab="bundles" aria-label="Bundles" hidden>
-      <div class="tabhead"><div><p class="micro" data-k="shop_k">Shop</p><h1 class="title" data-k="bundles_t">Bundles</h1></div><div class="tabhead-actions"><button class="icobtn" id="btn-history" type="button" aria-label="Purchase history"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/><path d="M4 12a8 8 0 0 1 2.3-5.6"/><polyline points="4 4 4 7.5 7.5 7.5"/></svg></button><button class="tabhead-btn" id="btn-finder" type="button" aria-label="Find your bundle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2.2"/><circle cx="10" cy="17" r="2.2"/></svg><span data-k="b_finder">Find your bundle</span></button></div></div>
+      <div class="tabhead"><div><p class="micro" data-k="shop_k">Shop</p><h1 class="title" data-k="bundles_t">Bundles</h1></div><div class="tabhead-actions"><button class="icobtn" id="btn-history" type="button" aria-label="Purchase history"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg></button><button class="tabhead-btn" id="btn-finder" type="button" aria-label="Find your bundle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2.2"/><circle cx="10" cy="17" r="2.2"/></svg><span data-k="b_finder">Find your bundle</span></button></div></div>
       <div class="chips" id="b-chips" role="tablist"></div>
       <div id="b-list"></div>
     </section>
@@ -2120,8 +2166,7 @@ body.perf-lite .u-shade-bg{backdrop-filter:none;-webkit-backdrop-filter:none}
         <div><p class="micro" data-k="shop_k">Shop</p><h1 class="title" data-k="b_finder">Find your bundle</h1></div></div>
       <div class="scrbody">
         <p class="cap" data-k="b_finder_s" style="color:var(--ink-soft);margin-bottom:18px">Tell us what you need, see bundles that fit.</p>
-        <button class="tabhead-btn" id="f-from-usage" type="button" data-k="f_from_usage" style="margin-bottom:14px;width:100%;justify-content:center">Start from my current usage</button>
-        <div class="fpanel"><div id="f-sliders"></div><div id="f-band"></div></div>
+        <div class="fbar" id="f-bar"><div class="fbar-row" role="group"></div><div class="fpanel2" id="f-panel"><div class="fpanel2-in" id="f-panel-in"></div></div></div>
         <div id="f-results"></div>
         <div class="fbtnrow"><button class="btn ghost" id="f-showall" type="button" data-k="b_show_all">Show all bundles</button></div>
       </div>
@@ -2140,7 +2185,7 @@ body.perf-lite .u-shade-bg{backdrop-filter:none;-webkit-backdrop-filter:none}
 
   <nav id="tabbar" aria-label="Main">
     <span id="tabpill" aria-hidden="true"></span>
-    <button id="btn-zhub" aria-label="Zain Hub"><span class="zring" aria-hidden="true"></span><img decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAYAAACLz2ctAAAUDklEQVR4nO2ce5BlRX3Hf93n3rmz7msWFnERFmQJAiqP+AZFkCVR0CjGUGIllhEDBIxiWSQ+AotaPks0KppCYnxUxdW1xMTSpKLCKioEXYOrE6NLdHRxnV12mLk7c+eec7r719/8cbvn9hzvPHZndmeQ36fq1J05p/vXv/71r999DpEgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIJQRS21AsKhA0BTpwyhlPJLrY/wKCI434z/P1JYNi0gAEUdfVKdQJ3ajaXRankCQCml0G63T6jX66fVarVfKaUeiPeXWr9HDADU9u3bawCyucIBqD1Sa/liEm3gnLuWmScAgJkNM78zff5IYUlawNDaaaUUJ/caRVEcl2XZeiJqEJHz3jeLotg3MDAwloTLiMg/Gms6AK2U8kVRnN5oNH4abjsiqhERFUWxecWKFXcCyFLbCglpDR0dHV3rnPtzZv48Mz8AIEcCM3sAw8y83Tn3tqIonpjImbXV/H0EQI2IyDn3GgAMwARTGQA2aQVrS6vpMiU6za5duxrOuRuYeQi/CzPzJDObHs9azHx7q9XakMp7tBDza629MHU8AAUAOOdeHcKJA1aJRjHGPJWZf5i2csz8LefcW6y1F7Tb7RPHxsYGxsfHjynL8knOuSuY+TPMPJLE+Y219sIg99HmhHrbtm2Zc+6OSq29d3h4eCUAHYY4QiSpuS8F0EqM9lVjzHPSsGNjYwN5np/cbDY3AVgf7zebzaOY+dbQLQNAYa29KJXfI10NIFvgpRdQqCrErYUrlRvvHdSkIeoRepFrmPk259z1AFamz6txKmkekoOiOxnMaBmtoMxK4nyXMDNH53HOXRvDlGV5lrX2Q8w8yMyu0u0OMfMnAZxKRBTGjCY48Gi73d4YDHPYZ3+hEOc0PMLs/nDInivd+dwjItq2bduCe47FaGkP61ghOIXP8/zkWq22lYi097601r68v7//q0NDQ/0bN258LxFdo7VuEBF57/d673+ptTbe+ydorU/SWr+GiK5wzr2xVqvdZoxZrbX+uNZ6XaPR+LBS6rKqAwKoGWPO7OvrW5ChjTEMYGJsbOy3SqnJIHvG9bZt27bFGagjIirL8hyl1DOzLDudiB5HRHUiKohoGMD/MPP3G43GYJy1btu2Lbv88stnncFu3769dt55592gtXbe++19fX07eukU7w0NDfVv2LDhBbVabSMz78vz/OsDAwNjmOdsGd3Z92m1Wu0i7/3Ovr6+7yqlMJstlpzY+jnnvhybszhQHhsbG2Dm7Wl3bK19fuxKQvxGURQvYuafxXDW2pcFmXcB8N57GGOeFtOLtXJ0dHQtgCYWB8vMDzLzrWNjYwMhrV6tTUZENDQ01B/W6X44l+BO1vk+Y8zVu3btaqRyeshX0S7MPB7ie2b+KMJQIQmrAag8zzcx848rCT5orb1ktrQq6daIiMqyfHUi49vtdntjTGsuGUecqFRZlk8B4ILSXwrPpg2irbU3V+JO61InJyePB/DrYOzdg4ODfXmeX5jE/3iIV0viq2B4B6BEZ9nCH+KVFt63duzYUa8aPaZtrb2gWuDozFRnulLZO40xz4s26mHT1AF/mcowxrypYgNNRMTM3wziy0qazlp78Uxp9cpbWZZXhPh50PcHg4ODfcvVAWtERMz8rmiAsizPAqCstS8P9zwzb43hURkHBUdqEBGVZfmXicNdGhzst+HWT9HpTmK82PJeVXGEQ3K68D+HQkR18oPu+txVIVx0Og6XTe5HXLjvkzAAwM65q1K5qT3Cb4OZd4fwBoBj5l1hV2mq8uZ5fnJIJ1a+NG3PzA/PpxVD1wFfmeTNBFtsTm2xbEC3Bt4NAMz83fiMme8KBiiLojgVYbbaQ0Y0uG61Wo8DcCDE+0CQc2eQ3a4aMv4aY65j5p8z87TWZh70ckQbCu/KkMbUNmLSPXEIg+QXQU8LYDKZjCGJE8MzADjnXhXSyHrYI3XA2LuMT0xMPDbqFX4vqMhPifHuiduhmGFSgd4OaAF459y0lvdgWZSmc8uWLdXxh1JK+T179jyGiE4Kt39ARHTgwIGjiejJ1JnG72o0Gg9Q58ABV2UqpTAxMXEhEamVK1ceIKJmiHd8CPYQEZHWekWtVjsu3FNEREopD0D19fV97P77739yq9V6krX26UT0dCJ6xizXuUR0BjP/lffeUDgQkcjOrLVxG0wppbjVap3d19f3CSKKecjC35n3/iHv/QeccxcbY05rt9unWmvPcM69xHv/Se99Tp1y4BCPiIizLLu9LMszlVKM2bs4FWxQX7VqVSO9R72XSkBEPqTltNbPPv/8828J9j/YVkwRUf9Bxlk8Yo1pNpunBGebdn9iYuKxzPwwABhjbiIiGhsbOynZRL8vhO85nirL8inW2tvDvaMA7A3xthIRMfO2WJ3zPH9+CJdVZB1015Dn+R8x828wvRWMSz//jtDNxYuZ7620eLF12Qrg2NnSKoriDGb+zgzxv4ekS52hBYytWw7ghPC8Hn4vrIRJifmyAOCce0Vq+xnKo9oCwjn31pnizYcFtYBxGl6v18867rjjyupz7z1Tp7ZRlmVrAaiBgYGHiWicOjXxic1m86jQWvUhdGlKKbdr165GrVbbqpT6OQBljNlIREcTEbz3vyEiAhBbQsqyrOdyQmhBosPMtNA8NakwxtzU39//n1rrx0cRRGSJqO69/1Gr1fqLmKRSyjvnLtVaP4u6LVhs+T6bZdkVSql96I5vdXJlAGr9/f0/1Vpv9t5vT+MTEWutz3XOvTDYZ6FjLA5lstV7/8OQr9gS+izLbi+K4jSllMMRnFQsOKGxsbE1jUbjtFjQ6bM1a9YcIKJ4kuV0pRSUUhNEdBcRKa31mtWrV9+6e/fuFUopo5RySikuy/KsTZs23UlEp7Tb7U8rpZBl2WbqrFsqIroHQJZlWTycAAAxnd9ZkwrpeqUUVy/qnMqxe/fuXcHMn6vX62+nTsFEOY46zvfNiYmJi9auXftw0IGJiLTWVydhPXXWOn+htb46OlrMV9DBJ7o4ADWlVKm1foX3foQ6ZRK7fWitr1pI+SQg6PuAMeYV1KlUSJ6tqtfrX9i9e/cK6uzgLO+djqhgnuenJN1kOg7MiIiY+V/RmTg0w0RCF0VxGjO3Y1/AzP/LzP/EzB9j5m+gOxC/kohoz549j2HmXwQ5rf3796+21sYBNgCMNZvNo1K95pmHeIzpD5I1u6nZaOymmPljcecAybbc+Pj4enQmRrFLi93S1an8eehRJyJyzr050SF2kaPNZnNdal8cWhcc8/XxkNa1lfzakNdPVXXHYeyCDxl01/nOcc7dFe6lSyhxaeJViaO9Pz4viuKFzLwfPWDmSWPM9TEsM/9j8uy2cO+O5N591fTn0F0hVJCiKC5J9JhaI4u/xpjrkjjRAeL24vOTAo7O2p6cnDwuDT8fWwJQ7Xb7BGaOR9Li8gyMMc9NbYqFOeA/oLtC8c+VfEenuqqS3vJ1QABnM/OeOAlBd6CsAKjh4eGVzPzrTtmws9b+SZTRbrdPdM7dyMxfYeZvMvPnjTF/l+f5phiGmd+X+ObI+Pj4+rIsnxT2jC0AWGvfO18jpE7hnHtTIjs6XWwJhq21cWIzbQM/pmOMuSqJwyHeT9BZBThYe6qg0/cTfWIhvzaEiY61IAeMYQD0M/OPkvR8+C2NMU8N4bJl7YDtdvuEsB12LpKWJSpPRGStvSwqzsylMeYNcdtpJowxz43rfOh0vUV0CGa+J3WWdCtuDp2ntsqY+VNJ4aSLx2Dme/M8PynEmXFW6Jx7axIvzlxjb3Cwp1ziwv0nexTyTSHMYjpgg4ioKIonhlWJ2IrHivR/YTtTDw4O9hEtPwecOhYEII9dY1URdMeCNyOBmX9srX27tfbFAJ5mjHmatfZFoUW823ufhh211v5xkHNLuF2GZ/+FeXR3Ua88z5+QLJvEQkkN/+mhoaF+os6m/2yynHM3LrYDWmtvTmTGCnFLCLOYDlhL8nF5xR4x3bh1Gnejlo8DEhHFmsHM3wLQHh8fPwaVTfGgXNwauy7ZRJ8XzHxXURSnExEZY95WNUBRFC9L06iCpFW21m4GMFwx9tRuhTHmhiTenFtTxpjXJ7KiA++M6c7HhugOWaKN3lDNI4CPhDCL6oDpr7X2QxW7xN7lb6Oey8YBo9EmJyefQURkjHkdAFhrP5MaoBInI5qaNX+YmX/V0+Mw9ZbXd5xzcc0t3VN2YfyH0BXP2PqFZyro+PpkC6w63hux1l4a9ZzLedB16Jck8uIkZDLM9uc1CRkdHV1bluW70R1Tv+4IO6ACkIVT1t+N+Qk9kGVmn+f5ZiKisizjhHLJHTDuf14JYAOAo5n5AAAYY66NRqgWAJJWat++fauMMc9zzr2BmT8A4CPW2nc5515dluVTkjjrrLVfqBS0A+DKsvzDqtwkniLqdKPM/IkQf6qrTQx4f3zZab5GjPnK8/wJ6L4YFPVCWZZx0jCjvODoOryi4MuyPJPoyLeAaX4AHB9WBKKdGJ3x996RkZE1RVH86XJxwNgFXWeMuZqIyFr7jpjZ9LQzKsfOMcPBg14URfFS7rwtN+UwscCNMTcGeT2dL1wrmPk/kvhxa40BwFr7hX379q1K83QQNohHvnYkzhcL7AEA/ZjhZHSIG4cvnw4F+TdERM65Nx5pB0ztmOf5Cyr2jr3NFxMHTGfoS+KAcdvqWc65+wCosFgcZ6cIs7kN1Uyi+15CHUAjFNS0LtsY8xxm/hK6RCPELvOribxeB0N1cI4vp06L5HSLMWZLCBvfc4jbdapyxa2zaS/QozuAT7vMKV2ttZ+v6FNLLkVEZK19OXfecfHW2g8GeUvigOk9Y8yWSp48ADjnhpIyWfpZMADtnHvQOXc9EdHk5OTjmfn+qCEz72Xmd6Vd6kzkeX6Sc+5K59w3uPviUZuZH0qdiJl/NDIysiY6Sw+9qks/qfMxgNGiKC5dSL6T/Kv9+/evZuYHMb17jxXm62VZnlOVEU5Mvw7dQ6Kewzu9S+yAKt5n5q+leUHvo2kLdsCFeG2mlHLOufdnWfaRycnJ761cufIHADZ77z+qtb5Ca30sEb21VqvdwMyD3vufaK2HmHmUiFSWZUcR0YlEdAYRna61XhWFe+/vZObfZln2YiIyRNTnvf9ZURSXrF+/fhyd9xR6vYsQjye9kDp7s6mTaiLS9Xr99c65G2mOLywAoPDVqZyIhrz3X1FKfQ3hPQgA2THHHDNRFMV1jUbj36izb6yoe5jg4lqttpmZv0dEO4lokog2ENG5Wuu42O6ISHnv74nJhms2oLWez3sYah6yuoE7efIA9Pj4+KtWrVr131rrjRT2uJPfKbJsic6hxhZwcHCwj5l/xsxjxpjz43Nr7WXJMaN5w8zfds690hhzIzr7rLE1+f58XkhPavBtmP71gEWBmT8U0pm2LeecuykEcUDvA6kV4qsCcM7djzAmrKzJVVvA2H0r59xOTD/8mraAcefizKg25tECJjbMiIiMMc9O9OjVAvo43p9N3mED3bHgU6Oizrm3DA8PT71YZIw531p7CzPfy8z7otEDJTqf3vi2c+7vy7I8u9Vqnc3JOT8AsNZuTSYLcy04xy744oqx4mXQ+ZLAwV55uGCMeVaaVlJgb07SjIXuknRNyHP8ogGYuRlnwERErVbrcdw5qOEBtIOcD4d0phaPmfk9ieMxgMnEATUAFRqHn4dwrRAuVqBZHQbdMW56aCFOtFzIA1qt1tnzKZfDRlLgL+bu+7o7nXN/HY+IJ2H7ABxfFMWpeZ5viidYiIjC21sf5OmnZB52zl2TxJ/35j4RkXPuLcnm/qLBzO8L6aRLGdEOF6STsTnk7IhjRCSrA86511aCTr10hTD2bDab63j6W3cewMaqrHBgop2Eu7Wq+yx2jM7+zhn0/+zBlEsvFuXMF8L7pcaY87Is+4TW+gwiIu/9Q0R0N4B7APyEmXc3Go0DRKTKslyXZdnJ4TDnxVrrZ0Z53vuSiD5njHnHihUrfhUyeFDfCUQYp+V5fkq9Xr9QKXWy937FArMax0B31+v1OxDel63agajTAmutLwPwTKXU47XWK4nIhjN/OwHckWXZF+MB0Cgn/m2tvUhrfQ0RnaO1/hel1BZ0zg66mLeRkZE1AwMDb1RKXUpEA1rr5ymlhqOM+FuW5dm1Wu16Ino2EW3NsuzmKGsedsyUUuyc+zOl1LVEdCKACe/9HfV6/d3UORe59N9wjDVu//79q8P47dczVPxeb4jFGvUgM9+adkmY55rhbDodSXp9cWD//v2rARx74MCBo6vrgr1aD0xfN8127NjRa2dpWuMR9uR7Lkmlf/eSNRepjLkOkSwpqaLNZnOdc+6V1trPcueTGwcqzmbRGf/dw8wftdZeFg9eBlnZli1bFjyuwO+uwS3GNadeCGuevY5lofs6wIw9UAwzRxpTa5jzsMGCKmPQJ3XmQ/7GTMqiH7tG749P6snJyWPr9fpR1Pn4JLz3E0VRjKxbt65ZiZ8R/X59dLtaUIcylFiMcPOVdbhlHBFw8J/fXfDHeYRHHkekwBPHqqa39INXQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQVhm/D9LuBTE8/VWFQAAAABJRU5ErkJggg==" alt="" width="44" height="44"></button>
+    <button id="btn-zhub" aria-label="Zain Hub"><span class="zring" aria-hidden="true"></span><img decoding="async" src="data:image/png;base64,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" alt="" width="44" height="44"></button>
     <button data-go="home" class="on" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg><span data-k="tab_home">Home</span></button>
     <button data-go="bundles" aria-label="Bundles"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l2 13H4L6 7z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg><span data-k="tab_bundles">Bundles</span></button>
     <button data-go="rewards" aria-label="Rewards"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6L3.2 9.4l6.1-.8L12 3z"/></svg><span data-k="tab_rewards">Rewards</span></button>
@@ -2789,13 +2834,13 @@ const BUNDLES = {
   consumer: [
     { id:'c1', n:{en:"Data Max 20",ar:"داتا ماكس ٢٠"}, d:{en:"20 GB data",ar:"٢٠ غيغا بيانات"}, m:0, s:0, p:"45,000", cat:'data', z:'rocket', tag:{en:"Bestseller",ar:"الأكثر مبيعاً"} },
     { id:'c2', n:{en:"Talk More 500",ar:"احكي أكثر ٥٠٠"}, d:{en:"500 minutes",ar:"٥٠٠ دقيقة"}, m:500, s:0, p:"25,000", cat:'voice', z:'phone' },
-    { id:'c3', n:{en:"All-in-One 12",ar:"الكل في واحد ١٢"}, d:{en:"12 GB + 300 min + 100 SMS",ar:"١٢ غيغا + ٣٠٠ دقيقة + ١٠٠ رسالة"}, m:300, s:100, p:"38,000", cat:'mixed', z:'star', tag:{en:"New",ar:"جديد"} },
-    { id:'c4', n:{en:"Night Owl",ar:"بومة الليل"}, d:{en:"Unlimited 1AM–7AM data",ar:"بيانات غير محدودة ١–٧ صباحاً"}, m:0, s:0, p:"9,000", cat:'data', z:'planet' },
+    { id:'c3', n:{en:"All-in-One 12",ar:"الكل في واحد ١٢"}, d:{en:"12 GB + 300 min + 100 SMS",ar:"١٢ غيغا + ٣٠٠ دقيقة + ١٠٠ رسالة"}, m:300, s:100, p:"38,000", cat:'mixed', z:'gift', tag:{en:"New",ar:"جديد"} },
+    { id:'c4', n:{en:"Night Owl",ar:"بومة الليل"}, d:{en:"Unlimited 1AM–7AM data",ar:"بيانات غير محدودة ١–٧ صباحاً"}, m:0, s:0, p:"9,000", cat:'data', z:'rocket' },
     { id:'c5', n:{en:"Social Plus",ar:"سوشيال بلس"}, d:{en:"10 GB social apps",ar:"١٠ غيغا لتطبيقات التواصل"}, m:0, s:50, p:"15,000", cat:'mixed', z:'shooting_star' },
-    { id:'c6', n:{en:"Voice 1000",ar:"صوت ١٠٠٠"}, d:{en:"1000 on-net minutes",ar:"١٠٠٠ دقيقة داخلية"}, m:1000, s:0, p:"30,000", cat:'voice', z:'medal' },
+    { id:'c6', n:{en:"Voice 1000",ar:"صوت ١٠٠٠"}, d:{en:"1000 on-net minutes",ar:"١٠٠٠ دقيقة داخلية"}, m:1000, s:0, p:"30,000", cat:'voice', z:'phone' },
     { id:'c7', n:{en:"Quick 3H",ar:"سريع ٣ ساعات"}, d:{en:"5 GB for 3 hours",ar:"٥ غيغا لمدة ٣ ساعات"}, m:0, s:0, p:"3,500", cat:'data', z:'rocket' },
-    { id:'c8', n:{en:"Weekend 14",ar:"عطلة ١٤ يوم"}, d:{en:"25 GB + 200 min for 14 days",ar:"٢٥ غيغا + ٢٠٠ دقيقة لمدة ١٤ يوم"}, m:200, s:0, p:"32,000", cat:'mixed', z:'star' },
-    { id:'c9', n:{en:"Daily Data 2",ar:"بيانات يومية ٢"}, d:{en:"2 GB for 24 hours",ar:"٢ غيغا لمدة ٢٤ ساعة"}, m:0, s:0, p:"4,500", cat:'data', z:'sun' },
+    { id:'c8', n:{en:"Weekend 14",ar:"عطلة ١٤ يوم"}, d:{en:"25 GB + 200 min for 14 days",ar:"٢٥ غيغا + ٢٠٠ دقيقة لمدة ١٤ يوم"}, m:200, s:0, p:"32,000", cat:'mixed', z:'gift' },
+    { id:'c9', n:{en:"Daily Data 2",ar:"بيانات يومية ٢"}, d:{en:"2 GB for 24 hours",ar:"٢ غيغا لمدة ٢٤ ساعة"}, m:0, s:0, p:"4,500", cat:'data', z:'rocket' },
     { id:'p1021', n:{en:"Prepaid Monthly Plan 7",ar:"باقة مسبق الدفع الشهرية 7"}, d:{en:"3 GB internet · 300 Local Min · 300 Local SMS",ar:"3 غيغا إنترنت · 300 دقيقة محلية · 300 رسالة محلية"}, m:300, s:300, p:"360", cat:'mixed', z:'star' },
     { id:'p1041', n:{en:"Prepaid Monthly Plan 9 (New)",ar:"باقة مسبق الدفع 9 (جديدة)"}, d:{en:"15 GB internet · 600 Local Min · 600 Local SMS",ar:"15 غيغا إنترنت · 600 دقيقة محلية · 600 رسالة محلية"}, m:600, s:600, p:"900", cat:'mixed', z:'star' },
     { id:'p1042', n:{en:"Prepaid Monthly Plan 14 (New)",ar:"باقة مسبق الدفع 14 (جديدة)"}, d:{en:"500 GB internet · 5000 Local Min · 5000 Local SMS",ar:"500 غيغا إنترنت · 5000 دقيقة محلية · 5000 رسالة محلية"}, m:5000, s:5000, p:"5000", cat:'mixed', z:'star' },
@@ -2811,17 +2856,17 @@ const BUNDLES = {
     { id:'p789', n:{en:"Weekly plan 1",ar:"باقة مسبق الدفع الأسبوعية 1"}, d:{en:"1 GB internet · 100 Local Min · 100 Local SMS",ar:"1 غيغا إنترنت · 100 دقيقة محلية · 100 رسالة محلية"}, m:100, s:100, p:"120", cat:'mixed', z:'star' },
     { id:'p790', n:{en:"Weekly plan 2",ar:"باقة مسبق الدفع الأسبوعية 2"}, d:{en:"3 GB internet · 200 Local Min · 200 Local SMS",ar:"3 غيغا إنترنت · 200 دقيقة محلية · 200 رسالة محلية"}, m:200, s:200, p:"240", cat:'mixed', z:'star' },
     { id:'p791', n:{en:"Daily plan 1",ar:"باقة مسبق الدفع اليومية 1"}, d:{en:"2 GB internet · 100 Local Min · 100 Local SMS",ar:"2 غيغا إنترنت · 100 دقيقة محلية · 100 رسالة محلية"}, m:100, s:100, p:"60", cat:'mixed', z:'star' },
-    { id:'p1121', n:{en:"Postpaid monthly bundle 3 / 950 SYP",ar:"باقة لاحق الدفع الشهرية 950 ل.س جديدة"}, d:{en:"15 GB internet · 500 Local Min · 500 Local SMS",ar:"15 غيغا إنترنت · 500 دقيقة محلية · 500 رسالة محلية"}, m:500, s:500, p:"950", cat:'mixed', z:'medal' },
-    { id:'p792', n:{en:"Postpaid Plan 1",ar:"باقة لاحق الدفع 1"}, d:{en:"25 GB internet · 1000 Local Min · 1000 Local SMS",ar:"25 غيغا إنترنت · 1000 دقيقة محلية · 1000 رسالة محلية"}, m:1000, s:1000, p:"1800", cat:'mixed', z:'medal' },
-    { id:'p793', n:{en:"Postpaid Plan 2",ar:"باقة لاحق الدفع 2"}, d:{en:"150 GB internet · 1500 Local Min · 1500 Local SMS",ar:"150 غيغا إنترنت · 1500 دقيقة محلية · 1500 رسالة محلية"}, m:1500, s:1500, p:"6000", cat:'mixed', z:'medal' },
-    { id:'p826', n:{en:"Postpaid Plan Students 1",ar:"باقة الطلاب 1"}, d:{en:"25 GB internet · 1000 Local Min · 1000 Local SMS",ar:"25 غيغا إنترنت · 1000 دقيقة محلية · 1000 رسالة محلية"}, m:1000, s:1000, p:"1350", cat:'mixed', z:'medal' },
-    { id:'p827', n:{en:"Postpaid Plan Students 2",ar:"باقة الطلاب 2"}, d:{en:"150 GB internet · 1500 Local Min · 1500 Local SMS",ar:"150 غيغا إنترنت · 1500 دقيقة محلية · 1500 رسالة محلية"}, m:1500, s:1500, p:"4500", cat:'mixed', z:'medal' },
-    { id:'p828', n:{en:"Postpaid Plan Journalist 1",ar:"باقة الصحفيين 1"}, d:{en:"25 GB internet · 1000 Local Min · 1000 Local SMS",ar:"25 غيغا إنترنت · 1000 دقيقة محلية · 1000 رسالة محلية"}, m:1000, s:1000, p:"1350", cat:'mixed', z:'medal' },
-    { id:'p829', n:{en:"Postpaid Plan Journalist 2",ar:"باقة الصحفيين 2"}, d:{en:"150 GB internet · 1500 Local Min · 1500 Local SMS",ar:"150 غيغا إنترنت · 1500 دقيقة محلية · 1500 رسالة محلية"}, m:1500, s:1500, p:"4500", cat:'mixed', z:'medal' },
-    { id:'p830', n:{en:"Postpaid plan public 1",ar:"باقة موظفي القطاع العام 1"}, d:{en:"25 GB internet · 1000 Local Min · 1000 Local SMS",ar:"25 غيغا إنترنت · 1000 دقيقة محلية · 1000 رسالة محلية"}, m:1000, s:1000, p:"1350", cat:'mixed', z:'medal' },
-    { id:'p831', n:{en:"Postpaid plan public 2",ar:"باقة موظفي القطاع العام 2"}, d:{en:"150 GB internet · 1500 Local Min · 1500 Local SMS",ar:"150 غيغا إنترنت · 1500 دقيقة محلية · 1500 رسالة محلية"}, m:1500, s:1500, p:"4500", cat:'mixed', z:'medal' },
-    { id:'p832', n:{en:"Postpaid Plan special needs 1",ar:"باقة ذوي الهمم 1"}, d:{en:"25 GB internet · 1000 Local Min · 1000 Local SMS",ar:"25 غيغا إنترنت · 1000 دقيقة محلية · 1000 رسالة محلية"}, m:1000, s:1000, p:"1170", cat:'mixed', z:'medal' },
-    { id:'p833', n:{en:"Postpaid Plan special needs 2",ar:"باقة ذوي الهمم 2"}, d:{en:"150 GB internet · 1500 Local Min · 1500 Local SMS",ar:"150 غيغا إنترنت · 1500 دقيقة محلية · 1500 رسالة محلية"}, m:1500, s:1500, p:"3900", cat:'mixed', z:'medal' },
+    { id:'p1121', n:{en:"Postpaid monthly bundle 3 / 950 SYP",ar:"باقة لاحق الدفع الشهرية 950 ل.س جديدة"}, d:{en:"15 GB internet · 500 Local Min · 500 Local SMS",ar:"15 غيغا إنترنت · 500 دقيقة محلية · 500 رسالة محلية"}, m:500, s:500, p:"950", cat:'mixed', z:'star' },
+    { id:'p792', n:{en:"Postpaid Plan 1",ar:"باقة لاحق الدفع 1"}, d:{en:"25 GB internet · 1000 Local Min · 1000 Local SMS",ar:"25 غيغا إنترنت · 1000 دقيقة محلية · 1000 رسالة محلية"}, m:1000, s:1000, p:"1800", cat:'mixed', z:'star' },
+    { id:'p793', n:{en:"Postpaid Plan 2",ar:"باقة لاحق الدفع 2"}, d:{en:"150 GB internet · 1500 Local Min · 1500 Local SMS",ar:"150 غيغا إنترنت · 1500 دقيقة محلية · 1500 رسالة محلية"}, m:1500, s:1500, p:"6000", cat:'mixed', z:'star' },
+    { id:'p826', n:{en:"Postpaid Plan Students 1",ar:"باقة الطلاب 1"}, d:{en:"25 GB internet · 1000 Local Min · 1000 Local SMS",ar:"25 غيغا إنترنت · 1000 دقيقة محلية · 1000 رسالة محلية"}, m:1000, s:1000, p:"1350", cat:'mixed', z:'star' },
+    { id:'p827', n:{en:"Postpaid Plan Students 2",ar:"باقة الطلاب 2"}, d:{en:"150 GB internet · 1500 Local Min · 1500 Local SMS",ar:"150 غيغا إنترنت · 1500 دقيقة محلية · 1500 رسالة محلية"}, m:1500, s:1500, p:"4500", cat:'mixed', z:'star' },
+    { id:'p828', n:{en:"Postpaid Plan Journalist 1",ar:"باقة الصحفيين 1"}, d:{en:"25 GB internet · 1000 Local Min · 1000 Local SMS",ar:"25 غيغا إنترنت · 1000 دقيقة محلية · 1000 رسالة محلية"}, m:1000, s:1000, p:"1350", cat:'mixed', z:'star' },
+    { id:'p829', n:{en:"Postpaid Plan Journalist 2",ar:"باقة الصحفيين 2"}, d:{en:"150 GB internet · 1500 Local Min · 1500 Local SMS",ar:"150 غيغا إنترنت · 1500 دقيقة محلية · 1500 رسالة محلية"}, m:1500, s:1500, p:"4500", cat:'mixed', z:'star' },
+    { id:'p830', n:{en:"Postpaid plan public 1",ar:"باقة موظفي القطاع العام 1"}, d:{en:"25 GB internet · 1000 Local Min · 1000 Local SMS",ar:"25 غيغا إنترنت · 1000 دقيقة محلية · 1000 رسالة محلية"}, m:1000, s:1000, p:"1350", cat:'mixed', z:'star' },
+    { id:'p831', n:{en:"Postpaid plan public 2",ar:"باقة موظفي القطاع العام 2"}, d:{en:"150 GB internet · 1500 Local Min · 1500 Local SMS",ar:"150 غيغا إنترنت · 1500 دقيقة محلية · 1500 رسالة محلية"}, m:1500, s:1500, p:"4500", cat:'mixed', z:'star' },
+    { id:'p832', n:{en:"Postpaid Plan special needs 1",ar:"باقة ذوي الهمم 1"}, d:{en:"25 GB internet · 1000 Local Min · 1000 Local SMS",ar:"25 غيغا إنترنت · 1000 دقيقة محلية · 1000 رسالة محلية"}, m:1000, s:1000, p:"1170", cat:'mixed', z:'star' },
+    { id:'p833', n:{en:"Postpaid Plan special needs 2",ar:"باقة ذوي الهمم 2"}, d:{en:"150 GB internet · 1500 Local Min · 1500 Local SMS",ar:"150 غيغا إنترنت · 1500 دقيقة محلية · 1500 رسالة محلية"}, m:1500, s:1500, p:"3900", cat:'mixed', z:'star' },
     { id:'b1022', n:{en:"Daily WhatsApp & Min Bundle",ar:"باقة ميكس واتساب اليومية"}, d:{en:"1 GB Whatsapp data · 50 Local Min",ar:"1 غيغا واتساب · 50 دقيقة محلية"}, m:50, s:0, p:"19", cat:'mixed', z:'shooting_star' },
     { id:'b825', n:{en:"Daily Social Media bundle",ar:"باقة تواصل اجتماعي يومية"}, d:{en:"4 GB social Media apps data",ar:"4 غيغا تطبيقات التواصل"}, m:0, s:0, p:"40", cat:'mixed', z:'shooting_star' },
     { id:'b901', n:{en:"Monthly Voice Bundle Prepaid 1",ar:"باقة الدقائق الأولى"}, d:{en:"300 Local Min",ar:"300 دقيقة محلية"}, m:300, s:0, p:"105", cat:'voice', z:'phone' },
@@ -2831,28 +2876,28 @@ const BUNDLES = {
     { id:'b794', n:{en:"Add-on Data 1",ar:"باقة انترنت اضافية 1"}, d:{en:"5 GB internet",ar:"5 غيغا إنترنت"}, m:0, s:0, p:"480", cat:'data', z:'rocket' },
     { id:'b795', n:{en:"Add-on Data 2",ar:"باقة انترنت اضافية 2"}, d:{en:"10 GB internet",ar:"10 غيغا إنترنت"}, m:0, s:0, p:"840", cat:'data', z:'rocket' },
     { id:'b941', n:{en:"Combo Weekly Bundle",ar:"باقة اسبوعية شاملة"}, d:{en:"6 GB internet · 300 Local Min · 300 Local SMS",ar:"6 غيغا إنترنت · 300 دقيقة محلية · 300 رسالة محلية"}, m:300, s:300, p:"360", cat:'mixed', z:'star' },
-    { id:'b862', n:{en:"Deaf and dumb for Postpaid lines",ar:"باقة الصم والبكم (خطوط لاحقة الدفع)"}, d:{en:"200 GB internet",ar:"200 غيغا إنترنت"}, m:0, s:0, p:"300", cat:'data', z:'sun' },
+    { id:'b862', n:{en:"Deaf and dumb for Postpaid lines",ar:"باقة الصم والبكم (خطوط لاحقة الدفع)"}, d:{en:"200 GB internet",ar:"200 غيغا إنترنت"}, m:0, s:0, p:"300", cat:'data', z:'rocket' },
     { id:'b981', n:{en:"Data Roaming Bundles Prepaid 1000 MB",ar:"باقة تجوال انترنت 1000 ميغا بايت"}, d:{en:"1 GB internet",ar:"1 غيغا إنترنت"}, m:0, s:0, p:"719", cat:'data', z:'planet' },
     { id:'b982', n:{en:"Data Roaming Bundles Prepaid 500 MB",ar:"باقة تجوال انترنت 500 ميغا بايت"}, d:{en:"512 MB internet",ar:"512 ميغا إنترنت"}, m:0, s:0, p:"387", cat:'data', z:'planet' },
     { id:'b983', n:{en:"Data Roaming Bundles Prepaid 2000 MB",ar:"باقة تجوال انترنت 2000 ميغا بايت"}, d:{en:"2 GB internet",ar:"2 غيغا إنترنت"}, m:0, s:0, p:"1329", cat:'data', z:'planet' },
     { id:'b984', n:{en:"Data Roaming Bundles Prepaid 3000 MB",ar:"باقة تجوال انترنت 3000 ميغا بايت"}, d:{en:"3 GB internet",ar:"3 غيغا إنترنت"}, m:0, s:0, p:"1882", cat:'data', z:'planet' },],
   business: [
-    { id:'b1', n:{en:"Fleet 50",ar:"أسطول ٥٠"}, d:{en:"50 GB pooled + 2000 min",ar:"٥٠ غيغا مشتركة + ٢٠٠٠ دقيقة"}, m:2000, s:0, p:"180,000", cat:'mixed', z:'medal', tag:{en:"Popular",ar:"شائع"} },
-    { id:'b2', n:{en:"Exec Roam",ar:"تجوال التنفيذيين"}, d:{en:"10 GB regional roaming",ar:"١٠ غيغا تجوال إقليمي"}, m:500, s:0, p:"95,000", cat:'data', z:'rocket' },
+    { id:'b1', n:{en:"Fleet 50",ar:"أسطول ٥٠"}, d:{en:"50 GB pooled + 2000 min",ar:"٥٠ غيغا مشتركة + ٢٠٠٠ دقيقة"}, m:2000, s:0, p:"180,000", cat:'mixed', z:'star', tag:{en:"Popular",ar:"شائع"} },
+    { id:'b2', n:{en:"Exec Roam",ar:"تجوال التنفيذيين"}, d:{en:"10 GB regional roaming",ar:"١٠ غيغا تجوال إقليمي"}, m:500, s:0, p:"95,000", cat:'data', z:'gift' },
     { id:'b3', n:{en:"Team Talk",ar:"مكالمات الفريق"}, d:{en:"Unlimited on-net calls",ar:"مكالمات داخلية غير محدودة"}, m:9999, s:0, p:"60,000", cat:'voice', z:'phone' },
-    { id:'b4', n:{en:"Data Pool 200",ar:"باقة بيانات مشتركة ٢٠٠"}, d:{en:"200 GB shared across lines",ar:"٢٠٠ غيغا مشتركة بين الخطوط"}, m:0, s:0, p:"450,000", cat:'data', z:'star' },
-    { id:'b5', n:{en:"Business Week 14",ar:"أسبوع أعمال ١٤"}, d:{en:"100 GB pooled for 14 days",ar:"١٠٠ غيغا مشتركة لمدة ١٤ يوم"}, m:0, s:0, p:"220,000", cat:'data', z:'medal' }],
+    { id:'b4', n:{en:"Data Pool 200",ar:"باقة بيانات مشتركة ٢٠٠"}, d:{en:"200 GB shared across lines",ar:"٢٠٠ غيغا مشتركة بين الخطوط"}, m:0, s:0, p:"450,000", cat:'data', z:'gift' },
+    { id:'b5', n:{en:"Business Week 14",ar:"أسبوع أعمال ١٤"}, d:{en:"100 GB pooled for 14 days",ar:"١٠٠ غيغا مشتركة لمدة ١٤ يوم"}, m:0, s:0, p:"220,000", cat:'data', z:'rocket' }],
   vip: [
-    { id:'v1', n:{en:"VIP Infinite",ar:"VIP لا محدود"}, d:{en:"Unlimited everything, priority network",ar:"كل شيء غير محدود، شبكة أولوية"}, m:9999, s:9999, p:"250,000", cat:'mixed', z:'crown', tag:{en:"Signature",ar:"التوقيع"} },
-    { id:'v2', n:{en:"Global Roam",ar:"تجوال عالمي"}, d:{en:"25 GB in 80+ countries",ar:"٢٥ غيغا في +٨٠ دولة"}, m:1000, s:200, p:"180,000", cat:'mixed', z:'planet' },
+    { id:'v1', n:{en:"VIP Infinite",ar:"VIP لا محدود"}, d:{en:"Unlimited everything, priority network",ar:"كل شيء غير محدود، شبكة أولوية"}, m:9999, s:9999, p:"250,000", cat:'mixed', z:'star', tag:{en:"Signature",ar:"التوقيع"} },
+    { id:'v2', n:{en:"Global Roam",ar:"تجوال عالمي"}, d:{en:"25 GB in 80+ countries",ar:"٢٥ غيغا في +٨٠ دولة"}, m:1000, s:200, p:"180,000", cat:'mixed', z:'gift' },
     { id:'v3', n:{en:"VIP Data 100",ar:"VIP بيانات ١٠٠"}, d:{en:"100 GB priority data",ar:"١٠٠ غيغا بيانات أولوية"}, m:0, s:0, p:"120,000", cat:'data', z:'rocket' },
-    { id:'v4', n:{en:"VIP Day Pass",ar:"يوم VIP"}, d:{en:"20 GB + 500 min for 24 hours",ar:"٢٠ غيغا + ٥٠٠ دقيقة لمدة ٢٤ ساعة"}, m:500, s:0, p:"55,000", cat:'mixed', z:'crown' }],
+    { id:'v4', n:{en:"VIP Day Pass",ar:"يوم VIP"}, d:{en:"20 GB + 500 min for 24 hours",ar:"٢٠ غيغا + ٥٠٠ دقيقة لمدة ٢٤ ساعة"}, m:500, s:0, p:"55,000", cat:'mixed', z:'star' }],
   her: [
-    { id:'h1', n:{en:"Family Share 30",ar:"مشاركة العائلة ٣٠"}, d:{en:"30 GB shared, 3 lines",ar:"٣٠ غيغا مشتركة، ٣ خطوط"}, m:600, s:150, p:"55,000", cat:'mixed', z:'butterfly', tag:{en:"Loved",ar:"محبوب"} },
-    { id:'h2', n:{en:"Her Data 15",ar:"بيانات لها ١٥"}, d:{en:"15 GB + safety alerts",ar:"١٥ غيغا + تنبيهات أمان"}, m:200, s:100, p:"28,000", cat:'mixed', z:'sun' },
+    { id:'h1', n:{en:"Family Share 30",ar:"مشاركة العائلة ٣٠"}, d:{en:"30 GB shared, 3 lines",ar:"٣٠ غيغا مشتركة، ٣ خطوط"}, m:600, s:150, p:"55,000", cat:'mixed', z:'star', tag:{en:"Loved",ar:"محبوب"} },
+    { id:'h2', n:{en:"Her Data 15",ar:"بيانات لها ١٥"}, d:{en:"15 GB + safety alerts",ar:"١٥ غيغا + تنبيهات أمان"}, m:200, s:100, p:"28,000", cat:'mixed', z:'star' },
     { id:'h3', n:{en:"Chat All Day",ar:"دردشة طوال اليوم"}, d:{en:"Unlimited messaging apps",ar:"تطبيقات مراسلة غير محدودة"}, m:0, s:0, p:"12,000", cat:'data', z:'shooting_star' },
-    { id:'h4', n:{en:"Her Voice 400",ar:"مكالمات لها ٤٠٠"}, d:{en:"400 minutes, any network",ar:"٤٠٠ دقيقة، أي شبكة"}, m:400, s:0, p:"18,000", cat:'voice', z:'phone' },
-    { id:'h5', n:{en:"Her Hour",ar:"ساعة لها"}, d:{en:"3 GB for 6 hours",ar:"٣ غيغا لمدة ٦ ساعات"}, m:0, s:0, p:"4,000", cat:'data', z:'butterfly' }],
+    { id:'h4', n:{en:"Her Voice 400",ar:"مكالمات لها ٤٠٠"}, d:{en:"400 minutes, any network",ar:"٤٠٠ دقيقة، أي شبكة"}, m:400, s:0, p:"18,000", cat:'voice', z:'gift' },
+    { id:'h5', n:{en:"Her Hour",ar:"ساعة لها"}, d:{en:"3 GB for 6 hours",ar:"٣ غيغا لمدة ٦ ساعات"}, m:0, s:0, p:"4,000", cat:'data', z:'rocket' }],
 };
 
 Object.assign(I18N.en, {
@@ -2864,7 +2909,7 @@ b_empty:"No bundles here yet",
 b_empty_hint:"Try another validity or clear the offers filter.",
 b_show_band:"Show {band} ({n})",b_clear_offers:"Clear offers filter",
 b_clear_sliders:"Clear sliders",b_show_all:"Show all bundles",b_best:"Best match",
-b_offer:"Special offer",b_activated:"Activated",b_activate:"Activate",
+b_offer:"Special offer",b_activated:"Activated",b_activate:"Activate",b_share:"Share",b_link_copied:"Link copied",
 b_what:"What you get",b_price_valid:"Price & validity",
 b_insuff:"Insufficient balance — recharge first",b_topup:"Top up balance",b_renew:"Auto-renew",b_pay_method:"Payment method",
 b_renew_on_s:"Renews automatically when it ends, if you have enough balance. Turning it off keeps this bundle until it expires.",
@@ -2874,7 +2919,7 @@ b_act_once:"will not renew automatically.",b_terms:"Terms apply — see zain.sy"
 b_general:"Available to everyone",b_btl_note:"Picked for your line",b_offers_count:"{n} offers",
 f_q_budget:"How much are you happy to spend?",f_q_data:"How much data do you need?",
 f_q_min:"How many minutes do you need?",f_q_sms:"How many SMS do you need?",
-f_q_valid:"How long should it last?",f_any:"Any",f_any_budget:"Any budget",
+f_q_valid:"How long should it last?",f_any:"Any",f_any_budget:"Any budget",f_budget:"Budget",f_data:"Data",f_minutes:"Minutes",f_validity:"Validity",
 f_atleast_data:"At least {n} GB",f_atleast_min:"At least {n} min",
 f_atleast_sms:"At least {n} SMS",f_unlimited:"Unlimited",
 f_daily_note:"Daily (incl. hourly)",f_no_fit:"No bundles fit yet — try loosening a slider",
@@ -2889,7 +2934,7 @@ b_empty:"لا توجد باقات هنا بعد",
 b_empty_hint:"جرّب صلاحية أخرى أو ألغِ فلتر العروض.",
 b_show_band:"اعرض {band} ({n})",b_clear_offers:"إلغاء فلتر العروض",
 b_clear_sliders:"مسح المؤشرات",b_show_all:"اعرض كل الباقات",b_best:"الأنسب لك",
-b_offer:"عرض خاص",b_activated:"مفعّلة",b_activate:"فعّل",
+b_offer:"عرض خاص",b_activated:"مفعّلة",b_activate:"فعّل",b_share:"مشاركة",b_link_copied:"تم نسخ الرابط",
 b_what:"ماذا تحصل",b_price_valid:"السعر والصلاحية",
 b_insuff:"الرصيد غير كافٍ — اشحن أولاً",b_topup:"اشحن رصيدك",b_renew:"التجديد التلقائي",b_pay_method:"طريقة الدفع",
 b_renew_on_s:"تتجدد تلقائياً عند انتهائها إذا كان رصيدك كافياً. إيقافها يبقي الباقة حتى انتهائها.",
@@ -2899,7 +2944,7 @@ b_act_once:"لن تتجدد تلقائياً.",b_terms:"تطبق الشروط �
 b_general:"متاحة للجميع",b_btl_note:"مختارة لخطك",b_offers_count:"عدد العروض: {n}",
 f_q_budget:"كم أنت مستعد أن تدفع؟",f_q_data:"كم بيانات تحتاج؟",
 f_q_min:"كم دقيقة تحتاج؟",f_q_sms:"كم رسالة تحتاج؟",
-f_q_valid:"كم يجب أن تدوم؟",f_any:"أيّ",f_any_budget:"أي ميزانية",
+f_q_valid:"كم يجب أن تدوم؟",f_any:"أيّ",f_any_budget:"أي ميزانية",f_budget:"الميزانية",f_data:"البيانات",f_minutes:"الدقائق",f_validity:"الصلاحية",
 f_atleast_data:"على الأقل {n} غيغا",f_atleast_min:"على الأقل {n} دقيقة",
 f_atleast_sms:"على الأقل {n} رسالة",f_unlimited:"غير محدود",
 f_daily_note:"يومي (يشمل الساعي)",f_no_fit:"لا توجد باقات مناسبة بعد — جرّب تخفيف أحد المؤشرات",
@@ -3020,23 +3065,19 @@ function syncZmojiTones() {
   set('payok-zm', 'party'); set('subok-zm', 'party');
 }
 
-/* ---- fit 390x844 canvas to viewport ---- */
+/* ---- FIGMA: fixed 402x874 frame — no viewport scaling, no standalone resizing ---- */
 function fit() {
   const st = stage();
-  if (document.body.classList.contains('standalone')) { sizeStage(); return; }
-  const s = Math.min(innerWidth / 390, innerHeight / 844);
-  st.style.transform = `scale(${s})`;
+  st.style.transform = 'none';
 }
 /* standalone: pin #stage to the real viewport height in px. 100dvh/innerHeight
    misreport on some Android WebViews (stage rendered ~87% tall), so measure in
    JS on load + resize + visualViewport resize; CSS 100dvh stays as fallback. */
 function sizeStage() {
-  const st = stage();
-  const h = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
-  if (h) st.style.height = Math.round(h) + 'px';
+  /* FIGMA: fixed 874px height — viewport-driven resizing disabled. */
 }
 addEventListener('resize', fit);
-if (window.visualViewport) window.visualViewport.addEventListener('resize', sizeStage);
+
 
 /* ---- native shell bridge (safe no-op in browsers) ---- */
 function syncStatusBar(light) {
@@ -3632,9 +3673,9 @@ function bCardElement(bd, best) {
     ? `<span class="bpill-act ${bd.autoRenew ? 'bpill-auto' : 'bpill-grey'}">${T('b_activated')}${bd.autoRenew ? ' <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>' : ''}</span>`
     : '';
   b.innerHTML = `${actPill}
-      <span class="bi"><img decoding="async" src="${ZI(bd.z)}" alt="" width="36" height="36"></span>
-      <span class="bt"><span class="t">${B(bd.n)}</span><span class="d" style="display:block">${bSubline(bd)}</span>${pills ? `<span class="bpills">${pills}</span>` : ''}</span>
-      <span class="bp"><span class="p num">${hero.big}</span><span class="u" style="display:block">${hero.cap}</span></span>`;
+      <span class="bwm" aria-hidden="true"><img decoding="async" src="${ZI(bd.z)}" alt="" width="120" height="120"></span>
+      <span class="bp bhero"><span class="p num">${hero.big}</span><span class="u" style="display:block">${hero.cap}</span></span>
+      <span class="bt"><span class="t">${B(bd.n)}</span><span class="d" style="display:block">${bSubline(bd)}</span>${pills ? `<span class="bpills">${pills}</span>` : ''}</span>`;
   b.onclick = () => openBundle(bd);
   return b;
 }
@@ -3692,7 +3733,7 @@ function renderBundles() {
       items.forEach(bd => list.appendChild(bCardElement(bd, false)));
     });
   }
-  if ($('view-finder')) renderFinderSliders();
+  if ($('view-finder')) renderFinderBar();
 }
 
 function renderRewards() {
@@ -3783,7 +3824,7 @@ function anchorOrigin(dd, trigger) {
   const rtl = stage().dir === 'rtl';
   const w = dd.offsetWidth;
   let left = rtl ? (s.right - r.right) - w + r.width : (r.right - s.left) - w;
-  left = Math.max(8, Math.min(390 - w - 8, left));
+  left = Math.max(8, Math.min(402 - w - 8, left));
   dd.style.left = left + 'px'; dd.style.right = 'auto';
   const ox = ((r.left + r.width / 2) - (s.left + left)) / w * 100;
   dd.style.transformOrigin = `${Math.max(8, Math.min(92, ox))}% 0%`;
@@ -3944,6 +3985,8 @@ function openBundle(bd) {
     if (bd.note) rows.push(B(bd.note));
   }
   const segNote = bd.segment === 'btl' ? T('b_just') : bd.segment === 'foryou' ? T('b_recommended') : bd.segment === 'plan' ? T('b_sec_plan') : bd.segment === 'addon' ? T('b_sec_addon') : T('b_general');
+  const shareable = bd.segment !== 'btl' || !!bd.offer;
+  const shareLink = 'https://zain.sy/bundles/' + bd.id;
   const offerRow = bd.offer
     ? `<div class="bpop-row"><span class="k">${T('b_offer')} — ${T('b_price_valid')}</span><span class="v"><s>${fmtN(bd.offer.old)} ${T('syp')}</s> · ${fmtN(bd.p)} ${T('syp')} (${ar ? 'ينتهي' : 'ends'} ${B(bd.offer.ends)})</span></div>`
     : '';
@@ -3951,10 +3994,11 @@ function openBundle(bd) {
     <div style="display:flex;gap:14px;align-items:center">
       <span class="bi" style="width:60px;height:60px;border-radius:18px;background:var(--glass-deep);border:1px solid var(--glass-brd);display:flex;align-items:center;justify-content:center"><img decoding="async" src="${ZI(bd.z)}" alt="" width="32" height="32"></span>
       <div><p class="st" id="sh-bundle-t">${B(bd.n)}</p><p class="sd" style="color:var(--ink-soft)">${segNote} · ${hero.big} ${hero.cap}</p>${(bd.offer || bd.activated) ? `<p style="margin-top:6px">${bd.offer ? `<span class="bpill-sm bpill-offer">${T('b_offer')}</span>` : ''}${bd.activated ? ` <span class="bpill-sm ${bd.autoRenew ? 'bpill-auto' : 'bpill-grey'}" style="position:static">${T('b_activated')}${bd.autoRenew ? ' <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>' : ''}</span>` : ''}</p>` : ''}</div>
+      <button class="icobtn sharebtn" id="b-share" type="button" aria-label="${T('b_share')}"${shareable ? '' : ' disabled'} style="margin-inline-start:auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.49" x2="8.59" y2="10.49"/></svg></button>
     </div>
     <p class="micro">${T('b_what')}</p>
     <div class="card" style="padding:6px 16px;background:var(--glass-deep);display:flex;flex-direction:column">
-      ${rows.map(r => `<p class="body" style="padding:6px 0">• ${r}</p>`).join('')}
+      ${rows.map(r => `<p class="body" style="padding:5px 0">• ${r}</p>`).join('')}
     </div>
     <p class="micro">${T('b_price_valid')}</p>
     <div class="card" style="padding:6px 16px;background:var(--glass-deep)">
@@ -3964,18 +4008,19 @@ function openBundle(bd) {
 
       ${offerRow}
     </div>
-    ${insufficient ? `<p class="bwarn" style="margin-top:10px">${T('b_insuff')}</p><button class="btn ghost" id="btn-topup" type="button" style="margin-top:10px;width:100%">${T('b_topup')}</button>` : ''}
-    ${bd.activated ? '' : `<div style="margin-top:16px;position:relative"><p class="micro">${T('b_pay_method')}</p><button class="payfield" id="pay-field" type="button" aria-haspopup="menu" aria-expanded="false" aria-label="${T('b_pay_method')}"><span class="pay-ic-w"><img decoding="async" src="${ZI('wallet')}" alt="" width="22" height="22"></span><span class="pay-ic-c" style="display:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></span><span class="dt">${T('h_bal')} · ${fmtN(S.balance)} ${T('syp')}</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><div class="dd paydd" id="pay-dd" role="menu" aria-label="${T('b_pay_method')}"><button type="button" role="menuitemradio" aria-checked="true" data-method="balance" class="cur"><img decoding="async" src="${ZI('wallet')}" alt="" width="26" height="26"><span class="dt">${T('h_bal')}<span class="ds2" style="display:block">${fmtN(S.balance)} ${T('syp')}</span></span></button><button type="button" role="menuitemradio" aria-checked="false" data-method="card"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg><span class="dt">${T('h_card')}</span></button></div></div>`}
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:16px">
+    ${insufficient ? `<p class="bwarn">${T('b_insuff')}</p><button class="btn ghost" id="btn-topup" type="button" style="width:100%">${T('b_topup')}</button>` : ''}
+    ${bd.activated ? '' : `<div style="position:relative"><p class="micro">${T('b_pay_method')}</p><button class="payfield" id="pay-field" type="button" aria-haspopup="menu" aria-expanded="false" aria-label="${T('b_pay_method')}"><span class="pay-ic-w"><img decoding="async" src="${ZI('wallet')}" alt="" width="22" height="22"></span><span class="pay-ic-c" style="display:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></span><span class="dt">${T('h_bal')} · ${fmtN(S.balance)} ${T('syp')}</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><div class="dd paydd" id="pay-dd" role="menu" aria-label="${T('b_pay_method')}"><button type="button" role="menuitemradio" aria-checked="true" data-method="balance" class="cur"><img decoding="async" src="${ZI('wallet')}" alt="" width="26" height="26"><span class="dt">${T('h_bal')}<span class="ds2" style="display:block">${fmtN(S.balance)} ${T('syp')}</span></span></button><button type="button" role="menuitemradio" aria-checked="false" data-method="card"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg><span class="dt">${T('h_card')}</span></button></div></div>`}
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:14px">
       <div><p style="font-weight:800">${T('b_renew')}</p><p class="cap" style="color:var(--ink-soft)">${bd.renew === 'once' ? T('b_renew_once') : T('b_renew_on_s')}</p></div>
       <button class="bswitch" id="btn-renew" type="button" role="switch" aria-checked="${pendingAuto && bd.renew === 'auto' ? 'true' : 'false'}" ${bd.renew === 'once' ? 'disabled' : ''} aria-label="${T('b_renew')}"><span class="knob"></span></button>
     </div>
-    <div class="srow" style="margin-top:16px">
-      <button class="btn ghost" data-close>${T('cancel')}</button>
+    <div class="srow">
       <button class="btn" id="btn-sub" ${insufficient ? 'disabled' : ''}>${bd.activated ? T('done') : T('b_activate')}</button>
     </div>
-    <p class="cap" style="text-align:center;color:var(--ink-faint);margin-top:12px">${T('b_terms')}</p>`;
+    <p class="cap" style="text-align:center;color:var(--ink-faint)">${T('b_terms')}</p>`;
   openSheet($('sh-bundle'));
+  const shb = $('b-share');
+  if (shb) shb.onclick = () => { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(shareLink).then(() => toast(T('b_link_copied')), () => toast(T('b_link_copied'))); else toast(T('b_link_copied')); };
   const tp = $('btn-topup');
   if (tp) tp.onclick = () => { closeOverlays().then(() => goTab('pay')); };
   const sw = $('btn-renew');
@@ -4070,154 +4115,130 @@ function openBundle(bd) {
 
 
 /* ---- v44: Find your bundle ---- */
-const F = { budget: null, data: 0, min: 0, sms: 0, band: 0 };
-function fStops() {
-  const list = BUNDLES[S.world];
-  const prices = [...new Set(list.map(bd => bPrice(bd)))].sort((a, b) => a - b);
-  const datas = [...new Set(list.map(bd => bd.dataGB || 0).filter(v => v > 0))].sort((a, b) => a - b);
-  const mins = [...new Set(list.map(bd => (bd.m >= 9999 ? 0 : bd.m)).filter(v => v > 0))].sort((a, b) => a - b);
-  const smss = [...new Set(list.map(bd => (bd.s >= 9999 ? 0 : bd.s)).filter(v => v > 0))].sort((a, b) => a - b);
-  return { prices, datas, mins, smss, bands: ['all', 'daily', 'weekly', 'monthly'] };
-}
-function fNeeds() {
-  const st = fStops();
-  const budgetCap = (F.budget === null || F.budget >= st.prices.length) ? Infinity : st.prices[F.budget];
-  const dataNeed = F.data === 0 ? null : (F.data > st.datas.length ? Infinity : st.datas[F.data - 1]);
-  const minNeed = F.min === 0 ? null : (F.min > st.mins.length ? Infinity : st.mins[F.min - 1]);
-  const smsNeed = F.sms === 0 ? null : (F.sms > st.smss.length ? Infinity : st.smss[F.sms - 1]);
-  return { budgetCap, dataNeed, minNeed, smsNeed, band: st.bands[F.band] || 'all' };
-}
-function fMatches() {
-  const nd = fNeeds();
-  return BUNDLES[S.world].filter(bd => {
-    if (bPrice(bd) > nd.budgetCap) return false;
-    if (nd.dataNeed !== null) {
-      if (nd.dataNeed === Infinity) { if (!(bd.unlim === 'data' || bd.unlim === 'all')) return false; }
-      else if (!((bd.dataGB || 0) >= nd.dataNeed || bd.unlim === 'data' || bd.unlim === 'all')) return false;
-    }
-    if (nd.minNeed !== null) {
-      if (nd.minNeed === Infinity) { if (!(bd.unlim === 'minutes' || bd.unlim === 'all' || bd.m >= 9999)) return false; }
-      else if (!((bd.m || 0) >= nd.minNeed || bd.unlim === 'minutes' || bd.unlim === 'all' || bd.m >= 9999)) return false;
-    }
-    if (nd.smsNeed !== null) {
-      if (nd.smsNeed === Infinity) { if (!(bd.unlim === 'sms' || bd.unlim === 'all' || bd.s >= 9999)) return false; }
-      else if (!((bd.s || 0) >= nd.smsNeed || bd.unlim === 'sms' || bd.unlim === 'all' || bd.s >= 9999)) return false;
-    }
-    if (nd.band !== 'all' && bBand(bd) !== nd.band) return false;
-    return true;
-  });
-}
-function fOvershoot(bd, nd) {
-  let o = 0;
-  if (nd.dataNeed !== null && nd.dataNeed !== Infinity) {
-    const have = (bd.unlim === 'data' || bd.unlim === 'all') ? nd.dataNeed : (bd.dataGB || 0);
-    o += Math.max(0, have - nd.dataNeed);
-  }
-  if (nd.minNeed !== null && nd.minNeed !== Infinity) {
-    const have = (bd.unlim === 'minutes' || bd.unlim === 'all' || bd.m >= 9999) ? nd.minNeed : (bd.m || 0);
-    o += Math.max(0, have - nd.minNeed) / 100;
-  }
-  if (nd.smsNeed !== null && nd.smsNeed !== Infinity) {
-    const have = (bd.unlim === 'sms' || bd.unlim === 'all' || bd.s >= 9999) ? nd.smsNeed : (bd.s || 0);
-    o += Math.max(0, have - nd.smsNeed) / 100;
-  }
-  return o;
-}
-function fRanked() {
-  const nd = fNeeds();
-  const list = fMatches();
-  const seg = { btl: 0, foryou: 1, atl: 2, plan: 3, addon: 4 };
-  const sorted = list.slice().sort((a, b) =>
-    (seg[a.segment] - seg[b.segment]) || (fOvershoot(a, nd) - fOvershoot(b, nd)) || (bPrice(a) - bPrice(b)));
-  let bestId = null, bestScore = Infinity;
+/* ---- finder redesign: 4-icon bar, one active dimension at a time ---- */
+const NF = { active: null, budget: null, data: null, minutes: null, validity: 'any' };
+let fRAF = 0;
+const FICONS = {
+  budget: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>',
+  data: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.9a2.18 2.18 0 0 0-2.91-.1z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>',
+  minutes: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+  validity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>'
+};
+function fWorldList() { return BUNDLES[S.world] || []; }
+function fEffData(bd) { return (bd.unlim === 'data' || bd.unlim === 'all') ? Infinity : (bd.dataGB || 0); }
+function fEffMin(bd) { return (bd.unlim === 'minutes' || bd.unlim === 'all') ? Infinity : (bd.m || 0); }
+function fRanges() {
+  const list = fWorldList();
+  let maxPrice = 0, maxData = 0, maxMin = 0;
   list.forEach(bd => {
-    const sc = fOvershoot(bd, nd) * 1000 + bPrice(bd) / 100000;
-    if (sc < bestScore) { bestScore = sc; bestId = bd.id; }
+    maxPrice = Math.max(maxPrice, bPrice(bd));
+    const d = fEffData(bd); if (d !== Infinity) maxData = Math.max(maxData, d);
+    const m = fEffMin(bd); if (m !== Infinity) maxMin = Math.max(maxMin, m);
   });
-  if (bestId) { const bi = sorted.findIndex(bd => bd.id === bestId); if (bi > 0) { const [best] = sorted.splice(bi, 1); sorted.unshift(best); } }
-  return { list: sorted, bestId };
+  return { maxPrice, maxData, maxMin };
 }
-function fBudgetLabel(st, v) { return v >= st.prices.length ? T('f_any_budget') : fmtN(st.prices[v]) + ' ' + T('syp'); }
-function fDataLabel(st, v) { return v === 0 ? T('f_any') : (v > st.datas.length ? T('f_unlimited') : T('f_atleast_data').replace('{n}', fmtN(st.datas[v - 1]))); }
-function fMinLabel(st, v) { return v === 0 ? T('f_any') : (v > st.mins.length ? T('f_unlimited') : T('f_atleast_min').replace('{n}', fmtN(st.mins[v - 1]))); }
-function fSmsLabel(st, v) { return v === 0 ? T('f_any') : (v > st.smss.length ? T('f_unlimited') : T('f_atleast_sms').replace('{n}', fmtN(st.smss[v - 1]))); }
-function fBandLabel(v) { return v === 0 ? T('f_any') : v === 1 ? T('f_daily_note') : v === 2 ? T('b_weekly') : T('b_monthly'); }
-function renderFinderSliders() {
-  const host = $('f-sliders'); if (!host) return;
-  const st = fStops();
-  /* budget Any is null, not an index — a numeric index clamped across worlds would turn Any into a cap (found by probe: business Any=4 became consumer 38,000) */
-  if (F.budget !== null) F.budget = Math.min(F.budget, st.prices.length - 1);
-  F.data = Math.min(F.data, st.datas.length + 1);
-  F.min = Math.min(F.min, st.mins.length + 1);
-  F.sms = Math.min(F.sms, st.smss.length + 1);
-  F.band = Math.min(Math.max(F.band, 0), 3);
-  const rows = [
-    { key: 'budget', q: T('f_q_budget'), max: st.prices.length, val: (F.budget === null ? st.prices.length : F.budget), lab: v => fBudgetLabel(st, v) },
-    { key: 'data', q: T('f_q_data'), max: st.datas.length + 1, val: F.data, lab: v => fDataLabel(st, v) },
-    { key: 'min', q: T('f_q_min'), max: st.mins.length + 1, val: F.min, lab: v => fMinLabel(st, v) },
-    { key: 'sms', q: T('f_q_sms'), max: st.smss.length + 1, val: F.sms, lab: v => fSmsLabel(st, v) }
-  ];
-  host.innerHTML = rows.map(r => `<div class="fslider"><label for="f-r-${r.key}">${r.q}</label><div class="fval" id="f-v-${r.key}">${r.lab(r.val)}</div><input id="f-r-${r.key}" type="range" min="0" max="${r.max}" step="1" value="${r.val}" aria-label="${r.q}"><div class="fends" aria-hidden="true"><span>${r.lab(0)}</span><span>${r.lab(r.max)}</span></div></div>`).join('');
-  const bandHost = $('f-band');
-  if (bandHost) {
-    const bandLabels = [T('f_any'), T('f_daily_note'), T('b_weekly'), T('b_monthly')];
-    bandHost.innerHTML = `<div class="fslider" style="margin-bottom:6px"><label>${T('f_q_valid')}</label><div class="fbandchips" role="group" aria-label="${T('f_q_valid')}">${bandLabels.map((lab, i) => `<button class="chip${F.band === i ? ' on' : ''}" type="button" aria-pressed="${F.band === i}" data-band="${i}">${lab}</button>`).join('')}</div></div>`;
-    bandHost.querySelectorAll('.chip').forEach(ch => { ch.onclick = () => { F.band = parseInt(ch.getAttribute('data-band'), 10); renderFinderSliders(); }; });
+function fResetDim(dim) {
+  const r = fRanges();
+  if (dim === 'budget') NF.budget = r.maxPrice;
+  else if (dim === 'data') NF.data = r.maxData;
+  else if (dim === 'minutes') NF.minutes = r.maxMin;
+  else if (dim === 'validity') NF.validity = 'any';
+}
+function fSelect(dim) {
+  if (NF.active === dim) { fResetDim(dim); NF.active = null; }
+  else { if (NF.active) fResetDim(NF.active); NF.active = dim; fResetDim(dim); }
+  renderFinderBar(); renderFinderResults();
+}
+function fPaintSlider(inp) {
+  const min = parseFloat(inp.min), max = parseFloat(inp.max), v = parseFloat(inp.value);
+  inp.style.setProperty('--fill', (max > min ? ((v - min) / (max - min)) * 100 : 100) + '%');
+}
+function renderFinderBar() {
+  const bar = $('f-bar'); if (!bar) return;
+  const row = bar.querySelector('.fbar-row');
+  row.setAttribute('aria-label', T('b_finder'));
+  const dims = ['budget', 'data', 'minutes', 'validity'];
+  const labels = { budget: T('f_budget'), data: T('f_data'), minutes: T('f_minutes'), validity: T('f_validity') };
+  row.innerHTML = dims.map(dim => `<button class="ficon${NF.active === dim ? ' on' : ''}" type="button" data-fdim="${dim}" aria-label="${labels[dim]}" aria-pressed="${NF.active === dim}">${FICONS[dim]}<span>${labels[dim]}</span></button>`).join('');
+  row.querySelectorAll('.ficon').forEach(b => { b.onclick = () => fSelect(b.dataset.fdim); });
+  const panel = $('f-panel'), inner = $('f-panel-in');
+  if (!NF.active) { panel.classList.remove('on'); setTimeout(() => { if (!NF.active) inner.innerHTML = ''; }, 480); }
+  else {
+    const r = fRanges();
+    if (NF.active === 'budget') NF.budget = Math.min(NF.budget === null ? r.maxPrice : NF.budget, r.maxPrice);
+    if (NF.active === 'data') NF.data = Math.min(NF.data === null ? r.maxData : NF.data, r.maxData);
+    if (NF.active === 'minutes') NF.minutes = Math.min(NF.minutes === null ? r.maxMin : NF.minutes, r.maxMin);
+    if (NF.active === 'validity') {
+      const bands = [['any', T('f_any')], ['daily', T('f_daily_note')], ['weekly', T('b_weekly')], ['monthly', T('b_monthly')]];
+      inner.innerHTML = `<div class="fbandchips" role="group" aria-label="${T('f_validity')}">${bands.map(([id, lab]) => `<button class="chip${NF.validity === id ? ' on' : ''}" type="button" data-band="${id}">${lab}</button>`).join('')}</div>`;
+      inner.querySelectorAll('.chip').forEach(ch => { ch.onclick = () => { NF.validity = ch.dataset.band; inner.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c === ch)); renderFinderResults(); }; });
+    } else {
+      const cfg = NF.active === 'budget' ? { min: 0, max: r.maxPrice, val: NF.budget }
+        : NF.active === 'data' ? { min: 0, max: r.maxData, val: NF.data }
+        : { min: 0, max: r.maxMin, val: NF.minutes };
+      inner.innerHTML = `<input class="fslider2" id="f-r2" type="range" min="${cfg.min}" max="${cfg.max}" step="1" value="${cfg.val}" aria-label="${labels[NF.active]}">`;
+      const inp = $('f-r2');
+      fPaintSlider(inp);
+      inp.addEventListener('input', () => {
+        const v = parseFloat(inp.value);
+        if (NF.active === 'budget') NF.budget = v;
+        else if (NF.active === 'data') NF.data = v;
+        else if (NF.active === 'minutes') NF.minutes = v;
+        fPaintSlider(inp);
+        if (!fRAF) fRAF = requestAnimationFrame(() => { fRAF = 0; renderFinderResults(); });
+      });
+    }
+    panel.classList.add('on');
   }
-  rows.forEach(r => {
-    const inp = $('f-r-' + r.key);
-    inp.addEventListener('input', () => {
-      const v = parseInt(inp.value, 10);
-      F[r.key] = (r.key === 'budget' && v >= st.prices.length) ? null : v;
-      $('f-v-' + r.key).textContent = r.lab(F[r.key] === null ? st.prices.length : F[r.key]);
-      renderFinderResults();
-    });
-  });
-  const fu = $('f-from-usage');
-  if (fu) fu.onclick = () => {
-    const u = S.usage || {};
-    const du = u.data ? u.data[0] : 0, mu = u.min ? u.min[0] : 0, su = u.sms ? u.sms[0] : 0;
-    const pick = (arr, need) => { for (let i = 0; i < arr.length; i++) if (arr[i] >= need) return i + 1; return arr.length + 1; };
-    F.data = du ? pick(st.datas, du) : 0;
-    F.min = mu ? pick(st.mins, mu) : 0;
-    F.sms = su ? pick(st.smss, su) : 0;
-    renderFinderSliders();
-  };
   const fa = $('f-showall');
   if (fa) fa.onclick = () => { S.bFilter = 'all'; S.bOffers = false; renderBundles(); showAppView(null); goTab('bundles'); };
-  renderFinderResults();
+}
+function fResults() {
+  const list = fWorldList();
+  const segOrder = ['btl', 'foryou', 'atl', 'plan', 'addon'];
+  const bySeg = (a, b) => segOrder.indexOf(a.segment) - segOrder.indexOf(b.segment) || bPrice(a) - bPrice(b);
+  if (!NF.active) return { list: [...list].sort(bySeg), bestId: null };
+  if (NF.active === 'budget') {
+    const v = NF.budget;
+    let c = list.filter(bd => bPrice(bd) <= v).sort((a, b) => bPrice(b) - bPrice(a) || bySeg(a, b));
+    if (!c.length && list.length) { const cheapest = Math.min(...list.map(bd => bPrice(bd))); c = list.filter(bd => bPrice(bd) === cheapest).sort(bySeg).slice(0, 1); }
+    return { list: c, bestId: c.length ? c[0].id : null };
+  }
+  if (NF.active === 'data' || NF.active === 'minutes') {
+    const eff = NF.active === 'data' ? fEffData : fEffMin;
+    const v = NF.active === 'data' ? NF.data : NF.minutes;
+    let c = list.filter(bd => eff(bd) >= v).sort((a, b) => (eff(a) - eff(b)) || bySeg(a, b));
+    if (!c.length && list.length) {
+      let largest = -1; list.forEach(bd => { const e = eff(bd); if (e !== Infinity && e > largest) largest = e; });
+      c = list.filter(bd => eff(bd) === largest).sort(bySeg).slice(0, 1);
+      if (!c.length) c = list.filter(bd => eff(bd) === Infinity).sort(bySeg).slice(0, 1);
+    }
+    return { list: c, bestId: c.length ? c[0].id : null };
+  }
+  if (NF.validity === 'any') return { list: [...list].sort(bySeg), bestId: null };
+  let c = list.filter(bd => bBand(bd) === NF.validity).sort(bySeg);
+  if (!c.length && list.length) {
+    const bands = ['daily', 'weekly', 'monthly'];
+    const i = bands.indexOf(NF.validity);
+    for (let d = 1; d <= 2 && !c.length; d++) {
+      const up = bands[i + d], dn = bands[i - d];
+      if (up && list.some(bd => bBand(bd) === up)) c = list.filter(bd => bBand(bd) === up).sort(bySeg);
+      else if (dn && list.some(bd => bBand(bd) === dn)) c = list.filter(bd => bBand(bd) === dn).sort(bySeg);
+    }
+    if (!c.length) c = [...list].sort(bySeg);
+  }
+  return { list: c, bestId: null };
 }
 function renderFinderResults() {
   const res = $('f-results'); if (!res) return;
-  const { list, bestId } = fRanked();
+  const { list, bestId } = fResults();
   res.innerHTML = '';
-  if (list.length) {
-    const head = document.createElement('div'); head.className = 'fres-head';
-    head.innerHTML = `<span class="micro">${T('b_results')}</span><span class="fres-sub">${T('b_best_first')}</span>`;
-    res.appendChild(head);
-  }
-  if (!list.length) {
-    const nd = fNeeds();
-    const bandCounts = {};
-    ['daily', 'weekly', 'monthly'].forEach(band => {
-      const saved = F.band; F.band = ['all', 'daily', 'weekly', 'monthly'].indexOf(band); bandCounts[band] = fMatches().length; F.band = saved;
-    });
-    let bestBand = null, bestN = 0;
-    ['daily', 'weekly', 'monthly'].forEach(band => { if (band !== nd.band && bandCounts[band] > bestN) { bestN = bandCounts[band]; bestBand = band; } });
-    const emp = document.createElement('div'); emp.className = 'fempty';
-    emp.innerHTML = `<p class="ftitle">${T('f_no_fit')}</p><p class="fdesc">${T('f_empty_hint')}</p>`;
-    if (bestBand) {
-      const bb = document.createElement('button'); bb.className = 'btn ghost';
-      bb.textContent = T('f_try_band').replace('{band}', bestBand === 'daily' ? T('f_daily_note') : T('b_' + bestBand)).replace('{n}', fmtN(bestN));
-      bb.onclick = () => { F.band = ['all', 'daily', 'weekly', 'monthly'].indexOf(bestBand); renderFinderSliders(); };
-      const row = document.createElement('div'); row.className = 'fbtnrow'; row.style.justifyContent = 'center'; row.appendChild(bb); emp.appendChild(row);
-    }
-    res.appendChild(emp);
-    return;
-  }
+  const head = document.createElement('div'); head.className = 'fres-head';
+  head.innerHTML = `<span class="micro">${T('b_results')}</span>${bestId ? `<span class="fres-sub">${T('b_best_first')}</span>` : ''}`;
+  res.appendChild(head);
   list.forEach(bd => res.appendChild(bCardElement(bd, bd.id === bestId)));
 }
-function openFinder() { showAppView('finder'); renderFinderSliders(); }
+function openFinder() { showAppView('finder'); renderFinderBar(); renderFinderResults(); }
 
 /* ---- v58: purchase history ---- */
 const PURCHASES = [
@@ -4362,7 +4383,7 @@ function openHistDetail(e, confirmOff) {
     autoRow = e.autoRenew ? `<div class="bpop-row"><span class="k">${T('b_renew')}</span><span class="v">${T('h_auto_on').replace('{date}', hNextRenewal(e, bd) || '')}</span></div>` : `<div class="bpop-row"><span class="k">${T('b_renew')}</span><span class="v">${T('h_auto_off')}</span></div>`;
   }
   const refundBlock = (e.status === 'refunded' && e.refund) ? `<p class="micro">${T('h_refund')}</p><div class="card" style="padding:6px 16px;background:var(--glass-deep)"><div class="bpop-row"><span class="k">${ar ? 'المبلغ' : 'Amount'}</span><span class="v num">${fmtN(e.refund.amount)} ${T('syp')}</span></div><div class="bpop-row"><span class="k">${ar ? 'إلى' : 'To'}</span><span class="v">${hMethod({method: e.refund.method})}</span></div><div class="bpop-row"><span class="k">${ar ? 'التاريخ' : 'Date'}</span><span class="v">${hDate(e.refund.date)}</span></div></div>` : '';
-  const failBlock = e.status === 'failed' ? `<p class="cap" style="color:var(--ink-soft);margin-top:10px">${e.fail ? (ar ? e.fail.ar : e.fail.en) : ''} ${T('h_no_charge')}</p>` : '';
+  const failBlock = e.status === 'failed' ? `<p class="cap" style="color:var(--ink-soft)">${e.fail ? (ar ? e.fail.ar : e.fail.en) : ''} ${T('h_no_charge')}</p>` : '';
   let primary = '';
   if (e.status === 'failed') primary = `<button class="btn" id="h-act">${T('h_retry')}</button>`;
   else if (e.status === 'expired') primary = `<button class="btn" id="h-act">${T('h_buy_again')}</button>`;
@@ -4372,11 +4393,11 @@ function openHistDetail(e, confirmOff) {
   let actions = '';
   if (confirmOff) {
     const next = hNextRenewal(e, bd) || (e.vt ? hDate(e.vt) : '');
-    actions = `<p class="cap" style="color:var(--ink-soft);margin-top:16px">${T('h_cancel_copy').replace('{name}', name).replace('{date}', e.vt ? hDate(e.vt) : '').replace('{next}', next)}</p><div class="srow" style="margin-top:12px"><button class="btn ghost" id="h-keep">${T('h_keep_renew')}</button><button class="btn" id="h-confirm-off">${T('h_confirm_off')}</button></div>`;
+    actions = `<p class="cap" style="color:var(--ink-soft)">${T('h_cancel_copy').replace('{name}', name).replace('{date}', e.vt ? hDate(e.vt) : '').replace('{next}', next)}</p><div class="srow"><button class="btn ghost" id="h-keep">${T('h_keep_renew')}</button><button class="btn" id="h-confirm-off">${T('h_confirm_off')}</button></div>`;
   } else {
-    actions = `<div class="srow" style="margin-top:16px"><button class="btn ghost" data-close>${T('cancel')}</button>${showPrimary ? primary : ''}</div>`;
-    if (e.status === 'active' && e.autoRenew) actions += `<div class="srow" style="margin-top:10px"><button class="btn ghost" id="h-off" style="width:100%">${T('h_cancel_renew')}</button></div>`;
-    actions += `<div style="margin-top:10px"><button class="btn ghost" id="h-sup" style="width:100%">${T('h_support')}</button></div>`;
+    actions = `<div class="srow"><button class="btn ghost" data-close>${T('cancel')}</button>${showPrimary ? primary : ''}</div>`;
+    if (e.status === 'active' && e.autoRenew) actions += `<div class="srow"><button class="btn ghost" id="h-off" style="width:100%">${T('h_cancel_renew')}</button></div>`;
+    actions += `<div><button class="btn ghost" id="h-sup" style="width:100%">${T('h_support')}</button></div>`;
   }
   $('hist-body').innerHTML = `
     <div style="display:flex;gap:14px;align-items:center">
@@ -4385,8 +4406,8 @@ function openHistDetail(e, confirmOff) {
     </div>
     <p class="micro">${T('b_what')}</p>
     <div class="card" style="padding:6px 16px;background:var(--glass-deep);display:flex;flex-direction:column">
-      ${allow.map(r => `<p class="body" style="padding:6px 0">• ${r}</p>`).join('')}
-      ${remain.length ? `<p class="micro" style="margin-top:8px">${ar ? 'المتبقي' : 'Remaining'}</p>${remain.map(r => `<p class="body" style="padding:6px 0">• ${r}</p>`).join('')}` : ''}
+      ${allow.map(r => `<p class="body" style="padding:5px 0">• ${r}</p>`).join('')}
+      ${remain.length ? `<p class="micro" style="margin-top:8px">${ar ? 'المتبقي' : 'Remaining'}</p>${remain.map(r => `<p class="body" style="padding:5px 0">• ${r}</p>`).join('')}` : ''}
     </div>
     <p class="micro">${T('b_price_valid')}</p>
     <div class="card" style="padding:6px 16px;background:var(--glass-deep)">
@@ -4681,7 +4702,7 @@ const NOTIF_DEFS = [
 const ICO_OK = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>';
 const ICO_WARN = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v6M12 16.5v.5"/><path d="M10.3 3.8L2.6 17.5c-.4.7 0 1.5.9 1.5h16.9c.9 0 1.3-.8.9-1.5L13.7 3.8c-.4-.7-1.4-.7-1.8 0z"/></svg>';
 const ZHUB_WHITE_URI = document.querySelector('#btn-zhub img').src;
-const ZHUB_BLACK_URI = "data:image/png;base64,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";
+const ZHUB_BLACK_URI = "data:image/png;base64,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";
 
 /* ---------- transplanted helpers ---------- */
 const planById = id => DBP.find(p => p.id === id);
@@ -5589,7 +5610,7 @@ function openHub() {
   const pr = panel.getBoundingClientRect(), br = btn.getBoundingClientRect();
   /* getBoundingClientRect returns screen px (stage fit-scale included);
      style left/top are local px. Divide by the scale or the bloom origin
-     drifts off the button on any screen wider than the 390 design width. */
+     drifts off the button on any screen wider than the 402 design width. */
   const _hubScale = pr.width / (panel.offsetWidth || pr.width) || 1;
   disc.style.left = ((br.left - pr.left) / _hubScale + (br.width / _hubScale) / 2 - 36) + 'px';
   disc.style.top = ((br.top - pr.top) / _hubScale + (br.height / _hubScale) / 2 - 36) + 'px';
@@ -6636,7 +6657,7 @@ function uSetupDrawer() {
   uCloseScroll = 0;
   renderUDrawer();
   const stage = $('stage');
-  const sr = stage ? stage.getBoundingClientRect() : { top: 0, left: 0, width: 390 };
+  const sr = stage ? stage.getBoundingClientRect() : { top: 0, left: 0, width: 402 };
   const hr = hero.getBoundingClientRect(); /* FIRST: the card where it sits on Home, before any node moves (the v36 placeholder goes in only AFTER this measure — inserting it first pushed the hero 411px down and the seat was measured there) */
   if (stage) stage.appendChild(d);
   d.hidden = false; d.classList.add('open'); /* visible from p=0; the bg opacity is progress-driven inline */
@@ -6657,7 +6678,7 @@ function uSetupDrawer() {
   uBg = { app: $('app'), ph: ph, secs: tab ? Array.prototype.slice.call(tab.querySelectorAll('.home-sec, .world-strip-wrap')) : [] };
   if (uBg.app) uBg.app.style.transformOrigin = '50% 46%';
   if (lw && inn) lw.insertBefore(hero, inn); /* the card takes its shade seat — the same rect as home */
-  const k = sr.width / 390 || 1;
+  const k = sr.width / 402 || 1;
   const topCss = (hr.top - sr.top) / k;
   uGeom = { top: topCss, left: (hr.left - sr.left) / k, right: (sr.left + sr.width - hr.right) / k,
             topT: 12, sideT: 12, /* grown rect: the app's sheet insets on every side */
