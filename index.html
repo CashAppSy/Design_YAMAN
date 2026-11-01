@@ -84,8 +84,8 @@ try {
 /* ============ onboarding / auth (journey v8, implemented 2026-10-20) ============
    Screens follow the app's design language: stage tokens, .btn, .phone-row,
    .otp, sheets and dialogs. Copy: frames_copy (FigCraft journey v8), EN + AR. */
-.auth{align-items:stretch;justify-content:flex-start;padding:0 24px calc(18px + env(safe-area-inset-bottom));text-align:start;overflow-y:auto}
-.auth-top{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:50px;margin-top:calc(10px + env(safe-area-inset-top));flex:0 0 auto}
+.auth{align-items:stretch;justify-content:flex-start;padding:0 24px calc(18px + env(safe-area-inset-bottom));padding-bottom:calc(18px + max(env(safe-area-inset-bottom),18px));text-align:start;overflow-y:auto}
+.auth-top{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:50px;margin-top:calc(10px + env(safe-area-inset-top));margin-top:calc(10px + max(env(safe-area-inset-top),28px));flex:0 0 auto}
 .auth-top .sp{flex:1}
 .auth-back{width:42px;height:42px;border-radius:50%;background:var(--glass);border:1px solid var(--glass-brd);
   display:flex;align-items:center;justify-content:center;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
@@ -192,7 +192,7 @@ img{display:block;max-width:100%}
   border:1px solid var(--glass-brd);box-shadow:none}
 .btn.block{width:100%}
 .btn:disabled{opacity:.45;box-shadow:none}
-.chip{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:var(--r-pill);
+.chip{display:inline-flex;align-items:center;min-height:48px;padding:0 16px;border-radius:var(--r-pill); /* v58: Fitts — chips to the 48px platform floor */
   background:var(--glass-deep);border:1px solid var(--glass-brd);color:var(--ink);
   font-size:var(--f-cap);font-weight:700;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .chip.on{background:var(--btn-bg);color:var(--btn-fg);border-color:transparent}
@@ -228,7 +228,7 @@ input{caret-color:var(--btn-bg)}
 .ob-dots{display:flex;gap:8px;justify-content:center;margin:6px 0 2px}
 .ob-dots i{width:8px;height:8px;border-radius:99px;background:var(--ink-faint);transition:width .25s ease,background-color .25s ease}
 .ob-dots i.on{width:26px;background:var(--btn-bg)}
-.ob-foot{padding:0 24px calc(28px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:12px}
+.ob-foot{padding:0 24px calc(28px + env(safe-area-inset-bottom));padding-bottom:calc(28px + max(env(safe-area-inset-bottom),18px));display:flex;flex-direction:column;gap:12px}
 .ob-skip{align-self:center;min-height:44px;padding:0 18px;font-size:var(--f-cap);font-weight:700;color:var(--ink-soft)}
 /* audience world picker */
 .worlds{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;margin-top:4px}
@@ -267,7 +267,7 @@ input{caret-color:var(--btn-bg)}
 #stage[data-theme="light"] .login-err{color:#7a0b16} /* r5: 4.66:1 on mid-gradient (was #a3121f at 3.3:1) */
 .linklike{min-height:44px;padding:0 12px;font-size:var(--f-cap);font-weight:700;color:var(--ink-soft);text-decoration:underline}
 /* ============ app shell ============ */
-#appbar{padding:calc(14px + env(safe-area-inset-top)) var(--gut) 8px;display:flex;align-items:center;gap:8px;z-index:5}
+#appbar{padding:calc(14px + env(safe-area-inset-top)) var(--gut) 8px;padding-top:calc(14px + max(env(safe-area-inset-top),28px));display:flex;align-items:center;gap:8px;z-index:5}
 #appbar .logo{width:74px;flex:none}
 #appbar .sp{flex:1}
 .icobtn{width:var(--tap);height:var(--tap);border-radius:50%;display:flex;align-items:center;justify-content:center;
@@ -279,7 +279,7 @@ input{caret-color:var(--btn-bg)}
 .icobtn .bdg{position:absolute;top:6px;inset-inline-end:6px;min-width:20px;height:20px;padding:0 5px;border-radius:99px;
   background:#e5484d;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center}
 /* tab bar */
-#tabbar{position:absolute;left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:60;
+#tabbar{position:absolute;left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom));bottom:calc(14px + max(env(safe-area-inset-bottom),18px));z-index:60;
   display:flex;padding:8px;border-radius:var(--r-pill);
   background:var(--glass);border:1px solid var(--glass-brd);
   backdrop-filter:blur(26px) saturate(160%);-webkit-backdrop-filter:blur(26px) saturate(160%);
@@ -321,7 +321,7 @@ input{caret-color:var(--btn-bg)}
   display:flex;align-items:center;justify-content:center}
 .qa .qi svg{width:22px;height:22px}
 /* promo carousel */
-#promos{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--gut));padding:2px var(--gut) 8px}
+#promos{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline-start:var(--gut);scrollbar-width:none;margin:0 calc(-1 * var(--gut));padding:2px var(--gut) 8px}
 #promos::-webkit-scrollbar{display:none}
 .promo{flex:0 0 272px;scroll-snap-align:start;border-radius:var(--r-lg);padding:18px;min-height:128px;
   position:relative;overflow:hidden;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;gap:4px}
@@ -420,6 +420,7 @@ input{caret-color:var(--btn-bg)}
 .bpop-row:last-child{border-bottom:0}
 .bpop-row .k{color:var(--ink-soft)}
 .bpop-row .v{font-weight:800;text-align:end}
+.bpop-row .v s.bpop-old{color:var(--ink-soft);font-weight:400} /* v58: hierarchy — struck old price muted so the new price is the isolate */
 .bswitch{width:52px;height:30px;flex:none;border-radius:99px;background:var(--glass-deep);border:1px solid var(--glass-brd);position:relative;transition:background .15s ease}
 .bswitch .knob{position:absolute;top:2px;inset-inline-start:2px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.3);transition:inset-inline-start .22s cubic-bezier(.34,1.56,.64,1),transform .22s cubic-bezier(.34,1.56,.64,1)} /* v50: springy knob */
 .bswitch[aria-checked="true"]{background:var(--btn-bg);border-color:transparent}
@@ -558,13 +559,13 @@ body:not(.perf-lite) #stage.focus .screen.on{filter:blur(5px) brightness(.97) sa
 body:not(.perf-lite) #stage.focus #patlayer{filter:blur(5px) brightness(.97)}
 #stage .sheet,#stage .dlg{box-shadow:0 30px 70px rgba(4,20,25,.30)}
 #scrim.on{opacity:1;visibility:visible}
-.sheet{position:absolute;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:67;
+.sheet{position:absolute;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));bottom:calc(12px + max(env(safe-area-inset-bottom),18px));z-index:67;
   background:var(--glass);border:1px solid var(--glass-brd);border-radius:28px;
   backdrop-filter:blur(30px) saturate(160%);-webkit-backdrop-filter:blur(30px) saturate(160%);
   box-shadow:0 24px 64px rgba(0,0,0,.3);padding:22px;max-height:76%;overflow-y:auto;
   display:flex;flex-direction:column;gap:12px;opacity:0;visibility:hidden}
 .sheet.on{opacity:1;visibility:visible;will-change:transform}
-#sh-bundle, #sh-hist{max-height:calc(100% - 24px - env(safe-area-inset-bottom));scrollbar-width:none;padding:18px 22px}
+#sh-bundle, #sh-hist{max-height:calc(100% - 24px - env(safe-area-inset-bottom));max-height:calc(100% - 24px - max(env(safe-area-inset-bottom),18px));scrollbar-width:none;padding:18px 22px}
 #sh-bundle #bundle-body{display:flex;flex-direction:column;gap:12px}
 #sh-bundle #bundle-body > .micro{margin-top:4px;margin-bottom:-4px}
 #sh-bundle #bundle-body > div .micro{margin-bottom:8px}
@@ -616,7 +617,8 @@ img{-webkit-user-drag:none}
 .dd button .dt{flex:1}
 .dd button .ds2{font-size:var(--f-cap);color:var(--ink-soft);font-weight:400}
 .dd .cur{background:var(--glass-deep)}
-#toast{position:absolute;left:50%;bottom:calc(108px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(16px);
+#dd-bell button.bell-featured{outline:1.5px solid #23AEB7;outline-offset:-1.5px}
+#toast{position:absolute;left:50%;bottom:calc(108px + env(safe-area-inset-bottom));bottom:calc(108px + max(env(safe-area-inset-bottom),18px));transform:translateX(-50%) translateY(16px);
   z-index:80;background:var(--ink);color:var(--toast-fg);padding:13px 22px;border-radius:99px;
   font-size:var(--f-body);font-weight:700;opacity:0;visibility:hidden;transition:opacity .28s ease,visibility .28s ease,transform .28s ease;white-space:normal;text-align:center;text-wrap:balance;
   box-shadow:0 12px 32px rgba(0,0,0,.3);max-width:88%}
@@ -650,12 +652,12 @@ body.perf-lite #stage[data-theme="dark"]{--glass:rgba(4,30,35,.9);--glass-deep:r
 /* hub layout overrides — must follow the original #scr-login rules */
 #scr-login{align-items:stretch;justify-content:flex-start;text-align:start}
 #scr-login .logo{width:72px;margin:2px auto 0}
-#scr-login .auth-top{min-height:44px;margin-top:calc(4px + env(safe-area-inset-top))}
+#scr-login .auth-top{min-height:44px;margin-top:calc(4px + env(safe-area-inset-top));margin-top:calc(4px + max(env(safe-area-inset-top),28px))}
 #scr-login .auth-links .linklike{min-height:34px}
 
 /* hub fit trims (402x874 stage, no scroll on the sign-in hub) */
 #scr-login{padding-bottom:10px}
-#scr-login .auth-top{min-height:40px;margin-top:calc(2px + env(safe-area-inset-top))}
+#scr-login .auth-top{min-height:40px;margin-top:calc(2px + env(safe-area-inset-top));margin-top:calc(2px + max(env(safe-area-inset-top),28px))}
 #scr-login h1.title{margin-top:6px}
 #scr-login .fld{margin-top:11px}
 #scr-login .phone-row{margin-top:0}
@@ -1570,12 +1572,13 @@ body.standalone #stage{width:402px!important;height:874px!important;border-radiu
 /* v51: scroll dots — sit between the packages and View all. 4px top + scroller's 10px bottom = 14px above, 10px bottom + foot's 4px top = 14px below, so both gaps match the card's 14px rhythm. Active dot is the accent pill from the user's crop (18px), rest are 6px ink-faint circles, 6px apart. Hidden when empty so meter/single states keep the old spacing. */
 .bu-dots{display:flex;justify-content:center;align-items:center;gap:6px;padding:4px 16px 10px}
 .bu-dots:empty{display:none}
-.bu-pdot{width:6px;height:6px;border-radius:99px;background:var(--ink-faint);flex:none;transition:width .25s ease,background-color .2s ease}
-.bu-pdot.on{width:18px;background:var(--btn-bg)}
-@media (prefers-reduced-motion: reduce){.bu-pdot{transition:none}}
+.bu-pdot{appearance:none;border:0;background:transparent;padding:6px 3px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none} /* v58: Fitts/Jakob — dots are tappable page controls, visual dot unchanged */
+.bu-pdot-i{width:6px;height:6px;border-radius:99px;background:var(--ink-faint);flex:none;transition:width .25s ease,background-color .2s ease}
+.bu-pdot.on .bu-pdot-i{width:18px;background:var(--btn-bg)}
+@media (prefers-reduced-motion: reduce){.bu-pdot-i{transition:none}}
 .bu-viewall{width:100%;min-height:48px;display:flex;align-items:center;justify-content:center;border:none;border-radius:var(--r-pill);background:var(--btn-bg);color:var(--btn-fg);box-shadow:0 8px 24px rgba(0,0,0,.18);font-size:var(--f-cap);font-weight:800;white-space:nowrap;cursor:pointer} /* v41: View all is now a big CTA pill like the hero Recharge button (.btn + .h-act .btn: full width, 48px, pill radius, theme btn-bg/btn-fg) — NOT the old v27 glass chip */
 .bu-viewall:active{transform:scale(.96)}
-.bu-scroller{display:flex;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;touch-action:pan-x;scroll-snap-type:x mandatory;gap:12px;padding:3px 17px 10px;scroll-padding-inline-start:17px} /* v39: snap so a swipe lands on a package fully, never half-cut */
+.bu-scroller{display:flex;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;touch-action:pan-x;scroll-snap-type:x mandatory;gap:12px;padding:11px 17px 2px;scroll-padding-inline-start:17px} /* v39: snap so a swipe lands on a package fully, never half-cut */
 .bu-scroller::-webkit-scrollbar{display:none}
 /* v23: middle glass removed — #u-slots was still carrying the old glass-deep fill/border/radius, so the scroller read as a third layer. Only outer Bundle Usage + package remain. */
 #u-slots.bu-scroller{background:none;background-color:transparent;border:none;box-shadow:none;border-radius:0;overflow-x:auto;overflow-y:hidden;gap:12px} /* v30: ID+class beats the old #u-slots{gap:0} — that was the missing spacing */
@@ -1592,6 +1595,10 @@ body.standalone #stage{width:402px!important;height:874px!important;border-radiu
 .bu-pkg-head{height:44px;display:flex;flex-direction:column;align-items:flex-start;gap:3px;white-space:nowrap;padding-inline-end:19px}
 .bu-pkg-name{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:850;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
 .bu-dot{width:8px;height:8px;border-radius:50%;flex:none}
+.bu-corner{position:absolute;top:0;inset-inline-start:0;width:52px;height:52px;border-end-end-radius:52px;pointer-events:none;z-index:1}
+.bu-corner img{position:absolute;top:6px;inset-inline-start:6px;width:30px;height:30px;pointer-events:none}
+.bu-package.bu-has-corner{overflow:hidden}
+.bu-package.bu-has-corner .bu-pkg-head{padding-inline-start:56px}
 .bu-pkg-meta{display:flex;align-items:center;justify-content:space-between;gap:4px;width:100%}
 .bu-expiry{font-size:12px;font-weight:800;white-space:nowrap;color:var(--ink)} /* v42: expiry is bold, larger and full-ink so it reads clearly; 'days left' is shorter than 'days remaining', so it also fits small 1-metric packages better */
 .bu-state{display:inline-flex;align-items:center;border-radius:9px;font-size:8px;font-weight:850;padding:2px 5px;white-space:nowrap;color:#FFFFFF;background:#034146} /* v29 p47: WHITE on EMERALD = PASS */
@@ -1651,7 +1658,7 @@ body.standalone #stage{width:402px!important;height:874px!important;border-radiu
 
 <!-- ONBOARDING -->
 <section id="scr-onboard" class="screen" aria-label="Welcome">
-  <div style="height:calc(20px + env(safe-area-inset-top))"></div>
+  <div style="height:calc(20px + env(safe-area-inset-top));height:calc(20px + max(env(safe-area-inset-top),28px))"></div>
   <div class="ob-track" id="ob-track">
     <div class="ob-slide" data-i="0">
       <div class="ob-art"><img decoding="async" id="ob-z0" src="data:image/svg+xml,%3Csvg%20fill%3D%22%23FFFFFF%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20width%3D%221000%22%20height%3D%221000%22%20viewBox%3D%220%200%201000%201000%22%3E%0A%3Cdefs%3E%0A%3CclipPath%20id%3D%22clip_1%22%3E%0A%3Cpath%20transform%3D%22matrix%281%2C0%2C0%2C-1%2C0%2C1000%29%22%20d%3D%22M0%201000H1000V0H0Z%22%2F%3E%0A%3C%2FclipPath%3E%0A%3C%2Fdefs%3E%0A%3Cg%3E%0A%3Cg%20clip-path%3D%22url%28%23clip_1%29%22%3E%0A%3Cpath%20transform%3D%22matrix%281%2C0%2C0%2C-1%2C759.7905%2C372.26179%29%22%20d%3D%22M0%200C-4.636-17.263-17.953-38.201-37.88-60.692-48.111-26.955-65.909%204-89.915%2029.815-50.901%2037.337-10.999%2038.422-.839%2020.987%202.097%2015.931%202.367%208.853%200%200M-259.805-329.943C-297.621-329.98-334.68-319.337-366.712-299.239-315.713-282.692-259.288-257.167-203.405-225.058-147.103-192.702-97.041-156.821-57.78-121.704-57.78-123.7-57.632-125.699-57.632-127.721-57.685-181.329-79.001-232.726-116.902-270.638-154.805-308.549-206.197-329.876-259.805-329.943M-518.748-276.428C-527.429-261.458-513.051-230.657-481.756-195.046-471.513-228.702-453.744-259.583-429.795-285.355-478.254-294.776-510.388-290.682-518.748-276.428M-259.805%2074.501C-213.501%2074.438-168.615%2058.508-132.632%2029.367-96.646%20.225-71.734-40.367-62.048-85.649-101.505-123.381-156.105-163.75-218.153-199.386-285.725-238.253-346.638-263.358-395.812-277.168-425.944-249.699-447.069-213.765-456.416-174.078-465.763-134.389-462.895-92.805-448.187-54.777-433.48-16.75-407.621%2015.945-374.004%2039.016-340.386%2062.086-300.578%2074.456-259.805%2074.501M24.76%2035.833C6.905%2066.61-41.825%2072.825-116.401%2054.304-150.561%2081.26-191.623%2098.047-234.883%20102.743-278.143%20107.439-321.852%2099.854-361%2080.856-400.148%2061.859-433.153%2032.217-456.233-4.672-479.313-41.561-491.535-84.207-491.497-127.721-491.496-138.446-490.754-149.157-489.278-159.781-543.187-214.972-562.176-260.349-544.248-291.274-533.15-310.411-509.722-320.102-475.541-320.102-454.769-319.743-434.097-317.131-413.889-312.309-410.313-311.52-406.687-310.632-403.013-309.843-366.682-338.48-322.612-355.585-276.474-358.956-230.337-362.328-184.247-351.812-144.14-328.761-104.031-305.712-71.742-271.182-51.427-229.621-31.115-188.06-23.708-141.37-30.16-95.563%201.036-63.503%2021.899-33.121%2028.682-7.768%2033.072%209.075%2031.789%2023.724%2024.76%2035.833%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A" alt="" width="104" height="104"></div>
@@ -1688,7 +1695,7 @@ body.standalone #stage{width:402px!important;height:874px!important;border-radiu
   <p class="body sub" data-k="a_signin_s">Welcome back — sign in with your Zain number to continue.</p>
   <form id="a-signin-form" novalidate>
     <div class="fld"><label for="a-num" data-k="a_number">Subscriber number</label>
-      <div class="phone-row"><span class="cc num" dir="ltr">+963</span><input id="a-num" class="num" inputmode="numeric" autocomplete="tel" maxlength="10" placeholder="0944 000 000" data-k-ph="a_num_ph" aria-label="Subscriber number" dir="ltr"></div>
+      <div class="phone-row"><span class="cc num" dir="ltr">+963</span><input id="a-num" class="num" inputmode="numeric" autocomplete="tel" maxlength="14" placeholder="0944 000 000" data-k-ph="a_num_ph" aria-label="Subscriber number" dir="ltr"></div>
     </div>
     <div class="fld"><label for="a-pass" data-k="a_password">Password</label>
       <input id="a-pass" class="in" type="password" autocomplete="current-password" placeholder="••••••••" aria-label="Password">
@@ -1741,7 +1748,7 @@ body.standalone #stage{width:402px!important;height:874px!important;border-radiu
   <p class="body sub" data-k="a_setup_s">Link your Zain number to finish creating your account.</p>
   <form id="a-setup-form" novalidate>
     <div class="fld"><label for="a-setup-num" data-k="a_zain_number">Zain number</label>
-      <div class="phone-row"><span class="cc num" dir="ltr">+963</span><input id="a-setup-num" class="num" inputmode="numeric" autocomplete="tel" maxlength="10" placeholder="0944 000 000" data-k-ph="a_num_ph" aria-label="Zain number" dir="ltr"></div>
+      <div class="phone-row"><span class="cc num" dir="ltr">+963</span><input id="a-setup-num" class="num" inputmode="numeric" autocomplete="tel" maxlength="14" placeholder="0944 000 000" data-k-ph="a_num_ph" aria-label="Zain number" dir="ltr"></div>
     </div>
     <p class="aerr" id="a-setup-err" role="alert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span data-k="a_err_number">Enter a valid 10-digit number.</span></p>
     <button class="btn block" type="submit" data-k="a_continue">Continue</button>
@@ -1767,7 +1774,7 @@ body.standalone #stage{width:402px!important;height:874px!important;border-radiu
     <div class="fld"><label for="a-su-name" data-k="a_name">Full name</label>
       <input id="a-su-name" class="in" type="text" autocomplete="name" aria-label="Full name"></div>
     <div class="fld"><label for="a-su-num" data-k="a_number">Subscriber number</label>
-      <div class="phone-row"><span class="cc num" dir="ltr">+963</span><input id="a-su-num" class="num" inputmode="numeric" autocomplete="tel" maxlength="10" placeholder="0944 000 000" data-k-ph="a_num_ph" aria-label="Subscriber number" dir="ltr"></div>
+      <div class="phone-row"><span class="cc num" dir="ltr">+963</span><input id="a-su-num" class="num" inputmode="numeric" autocomplete="tel" maxlength="14" placeholder="0944 000 000" data-k-ph="a_num_ph" aria-label="Subscriber number" dir="ltr"></div>
     </div>
     <p class="aerr" id="a-su1-err" role="alert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span data-k="a_err_fields">Enter your name and a valid 10-digit number.</span></p>
     <button class="btn block" type="submit" data-k="a_next">Next</button>
@@ -1870,7 +1877,7 @@ body.standalone #stage{width:402px!important;height:874px!important;border-radiu
   <p class="body sub" data-k="a_change_s">Enter the correct number. We'll send a new code.</p>
   <form id="a-cn-form" novalidate>
     <div class="fld"><label for="a-cn-num" data-k="a_number">Subscriber number</label>
-      <div class="phone-row"><span class="cc num" dir="ltr">+963</span><input id="a-cn-num" class="num" inputmode="numeric" autocomplete="tel" maxlength="10" placeholder="0944 000 000" data-k-ph="a_num_ph" aria-label="Subscriber number" dir="ltr"></div>
+      <div class="phone-row"><span class="cc num" dir="ltr">+963</span><input id="a-cn-num" class="num" inputmode="numeric" autocomplete="tel" maxlength="14" placeholder="0944 000 000" data-k-ph="a_num_ph" aria-label="Subscriber number" dir="ltr"></div>
     </div>
     <p class="aerr" id="a-cn-err" role="alert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span data-k="a_err_number">Enter a valid 10-digit number.</span></p>
     <button class="btn block" type="submit" data-k="a_update">Update number</button>
@@ -2062,7 +2069,7 @@ body.standalone #stage{width:402px!important;height:874px!important;border-radiu
             <span class="bu-title" id="u-title">My usage</span>
           </div>
         <div class="bu-scroller" id="u-slots" aria-label="Bundle usage"></div>
-        <div class="bu-dots" id="u-dots" aria-hidden="true"></div>
+        <div class="bu-dots" id="u-dots"></div>
         <div class="bu-foot">
           <button class="bu-viewall" id="u-viewall" type="button">View all →</button>
         </div>
@@ -2085,6 +2092,7 @@ body.standalone #stage{width:402px!important;height:874px!important;border-radiu
         <p class="n num" id="pts-n">2,450</p>
         <p class="cap" data-k="pts_l">points available</p>
         <div class="tier"><div class="lbl"><span data-k="tier">Gold tier</span><span class="num" id="tier-t">2,450 / 3,000</span></div><div class="tr"><div class="fl" id="tier-b"></div></div></div>
+        <p class="cap" id="tier-left" style="margin-top:6px"></p>
       </div>
       <div class="home-sec"><span class="micro" data-k="redeem">Redeem points</span><div id="r-list"></div></div>
     </section>
@@ -2092,6 +2100,7 @@ body.standalone #stage{width:402px!important;height:874px!important;border-radiu
     <section id="tab-pay" class="scroll" data-tab="pay" aria-label="Pay" hidden>
       <div class="tabhead"><div><p class="micro" data-k="pay_k">Top up</p><h1 class="title" data-k="pay_t">Pay &amp; Recharge</h1></div></div>
       <div class="impseg" id="pay-seg" style="display:none"><span class="segpill" id="pay-segpill"></span><button id="seg-recharge" data-k="pay_seg_re">Recharge</button><button id="seg-bill" data-k="pay_seg_bill">Bill</button><button id="seg-cards" data-k="seg_cards">Cards</button></div>
+      <div class="card" id="pay-pending" hidden style="padding:14px 16px;margin-bottom:12px"><p id="pay-pending-text" style="margin:0 0 10px"></p><div style="display:flex;gap:8px;align-items:center"><button class="btn" id="pay-pending-topup" type="button"></button><button class="linklike" id="pay-pending-dismiss" type="button"></button></div></div>
       <div class="card" id="pay-hero">
         <img decoding="async" class="zm" src="data:image/svg+xml,%3Csvg%20fill%3D%22%23FFFFFF%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20width%3D%221000%22%20height%3D%221000%22%20viewBox%3D%220%200%201000%201000%22%3E%0A%3Cdefs%3E%0A%3CclipPath%20id%3D%22clip_1%22%3E%0A%3Cpath%20transform%3D%22matrix%281%2C0%2C0%2C-1%2C0%2C1000%29%22%20d%3D%22M0%201000H1000V0H0Z%22%2F%3E%0A%3C%2FclipPath%3E%0A%3C%2Fdefs%3E%0A%3Cg%3E%0A%3Cg%20clip-path%3D%22url%28%23clip_1%29%22%3E%0A%3Cpath%20transform%3D%22matrix%281%2C0%2C0%2C-1%2C694.5372%2C506.0624%29%22%20d%3D%22M0%200V-84.881H-114.637C-138.076-84.881-157.079-65.88-157.079-42.441-157.079-19-138.076%200-114.637%200ZM-1.227-187.553C-2.046-188.29-3.11-188.781-4.256-188.781H-384.738C-385.883-188.781-387.029-188.29-387.847-187.553-388.667-186.734-389.075-185.588-389.075-184.443V126.868C-389.075%20128.014-388.667%20129.078-387.847%20129.896-387.029%20130.715-385.883%20131.206-384.738%20131.206H-4.256C-3.11%20131.206-2.046%20130.715-1.227%20129.896-.409%20129.078%200%20128.014%200%20126.868V32.197H-114.637C-155.86%2032.197-189.275-1.219-189.275-42.441-189.275-83.661-155.86-117.077-114.637-117.077H0V-184.443C0-185.588-.409-186.734-1.227-187.553M-318.961%20198.428C-299.086%20200.673-273.414%20200.716-237.522%20200.716-219.03%20200.716-206.821%20200.676-197.763%20199.406-189.214%20198.208-185.889%20196.2-183.723%20193.942-181.719%20191.853-179.911%20188.699-178.694%20181.719-177.85%20176.878-177.406%20170.908-177.178%20163.213H-379.825C-379.252%20164.277-378.516%20165.342-377.861%20166.324L-377.895%20166.348C-372.925%20173.478-366.929%20179.721-360.142%20184.862-350.746%20191.978-338.665%20196.202-318.961%20198.428M24.067%20154.045C18.173%20159.939%2010.232%20163.213%201.965%20163.213H-144.972C-145.215%20172.154-145.749%20180.203-146.976%20187.248-148.867%20198.092-152.602%20208.009-160.486%20216.229-169.57%20225.699-180.924%20229.557-193.294%20231.291-205.132%20232.95-220.043%20232.913-237.678%20232.913-272.793%20232.913-300.531%20232.911-322.574%20230.421-345.19%20227.867-363.734%20222.531-379.582%20210.527-389.097%20203.32-397.438%20194.616-404.314%20184.75L-404.302%20184.741C-413.388%20171.808-418.463%20157.073-421.246%20139.802-421.574%20138.082-421.819%20136.363-422.065%20134.562-422.147%20134.481-422.147%20134.317-422.147%20134.235-422.228%20133.498-422.228%20132.68-422.228%20131.943V36.577-189.518C-422.228-197.867-418.954-205.808-413.061-211.619-407.249-217.513-399.308-220.788-390.959-220.788H1.965C10.232-220.788%2018.173-217.513%2024.067-211.619%2029.88-205.808%2033.153-197.867%2033.153-189.518V131.943C33.153%20140.211%2029.88%20148.151%2024.067%20154.045%22%2F%3E%0A%3Cpath%20transform%3D%22matrix%281%2C0%2C0%2C-1%2C568.5062%2C559.9171%29%22%20d%3D%22M0%200V-2.443H80.06C90.277-2.443%2097.164%20.222%20102.272%205.332%20107.603%2010.663%20110.488%2018.659%20110.488%2027.987V30.432H30.428C20.433%2030.432%2013.546%2027.765%208.438%2022.657%203.107%2017.326%200%209.552%200%200%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A" alt="" width="64" height="64" id="pay-zmoji" style="margin:0 auto 6px;filter:drop-shadow(0 0 12px rgba(255,255,255,.45))">
         <p class="micro" data-k="amount">Amount</p>
@@ -2416,7 +2425,7 @@ body.standalone #stage{width:402px!important;height:874px!important;border-radiu
   <div class="imp-fld"><input id="gift-search" class="imp-field" data-k-ph="gift_search_ph" placeholder="Search bundles"></div>
   <div class="imp-fld">
     <label class="imp-flab" for="gift-num" data-k="b_gift_num">Recipient number</label>
-    <input id="gift-num" class="imp-field num" inputmode="numeric" maxlength="10" placeholder="0933 000 000" dir="ltr">
+    <input id="gift-num" class="imp-field num" inputmode="numeric" maxlength="14" placeholder="0933 000 000" dir="ltr">
   </div>
   <p class="micro" data-k="bundles_t">Bundles</p>
   <div id="gift-list" style="max-height:280px;overflow-y:auto"></div>
@@ -2473,7 +2482,7 @@ body.standalone #stage{width:402px!important;height:874px!important;border-radiu
   <p class="st" id="al-t" data-k="lines_add">Add a line</p>
   <p class="sd" data-k="lines_add_s">Add another Zain number to switch between lines.</p>
   <div class="imp-fld">
-    <input id="addline-num" class="imp-field num" inputmode="numeric" maxlength="10" placeholder="0933 000 000" dir="ltr">
+    <input id="addline-num" class="imp-field num" inputmode="numeric" maxlength="14" placeholder="0933 000 000" dir="ltr">
   </div>
   <div class="login-err" id="addline-err" role="alert"></div>
   <div class="srow">
@@ -3084,7 +3093,7 @@ const WORLD_STRIP = {
 /* ============ app state & shell ============ */
 const S = {
   world: 'consumer', theme: 'light', tab: 'home',
-  points: 2450, balance: 18450, authed: false,
+  points: 2450, balance: 18450, authed: false, pendingTopup: null, /* v58: Recognition — bundle awaiting top-up after insufficient balance */
   payAmt: 10000, method: 'card', bFilter: 'all',
   usage: { data: [8.4, 12, 'GB'], min: [320, 500, ''], sms: [45, 100, ''] },
 };
@@ -3100,6 +3109,7 @@ function syncZmojiTones() {
   set('ob-z0', 'planet'); set('ob-z1', 'rocket'); set('ob-z2', 'shooting_star');
   set('pts-zmoji', 'gift'); set('pay-zmoji', 'wallet');
   set('payok-zm', 'party'); set('subok-zm', 'party');
+  if (window.__syncCornerTones) window.__syncCornerTones();
 }
 
 /* ---- FIGMA: fixed 402x874 frame — no viewport scaling, no standalone resizing ---- */
@@ -3113,6 +3123,19 @@ function fit() {
 function sizeStage() {
   /* FIGMA: fixed 874px height — viewport-driven resizing disabled. */
 }
+/* v60: fullscreen self-fit, APK shell only. The shell makes the window
+   edge-to-edge; this pins the stage to the real viewport height from
+   inside the page, so a late/missed shell injection cannot leave the
+   stage short with a dark gap at the top. Guarded by window.ZainApp,
+   so framed browser previews keep the exact 402x874 frame. */
+function fitStageSelf() {
+  if (!window.ZainApp) return;
+  var st = document.getElementById('stage');
+  if (st) st.style.setProperty('height', window.innerHeight + 'px', 'important');
+}
+fitStageSelf();
+addEventListener('resize', fitStageSelf);
+if (window.visualViewport) window.visualViewport.addEventListener('resize', fitStageSelf);
 addEventListener('resize', fit);
 
 
@@ -3271,7 +3294,9 @@ const AUTH = {
   bioEnrolled: false, bioPromptArmed: false, bioTouchSeen: false, gmailKnown: false,
   carrierField: null, carrierOk: null, failReturn: 'scr-auth-signup1', offlineReturn: 'scr-login'
 };
-const digitsOf = el => (el.value || '').replace(/\D/g, '');
+/* v58: Postel — Arabic-Indic digits convert to Latin instead of being stripped, so an Arabic-keyboard number is not silently rejected. */
+const arToLatin = s => (s || '').replace(/[\u0660-\u0669]/g, d => d.charCodeAt(0) - 0x660).replace(/[\u06F0-\u06F9]/g, d => d.charCodeAt(0) - 0x6F0);
+const digitsOf = el => arToLatin(el.value).replace(/\D/g, '');
 const validNum = n => /^09\d{8}$/.test(n);
 const carrierOf = n => /^09[45]/.test(n) ? 'zain' : (/^09[389]/.test(n) ? 'rival' : 'invalid');
 const passOk = p => p.length >= 8 && /[a-z]/.test(p) && /[A-Z]/.test(p) && /\d/.test(p) && /[^A-Za-z0-9]/.test(p);
@@ -3799,18 +3824,31 @@ function renderRewards() {
   countUp($('pts-n'), S.points);
   { const f = Math.min(1, S.points / 3000), tb = $('tier-b'); tb.style.transform = 'scaleX(' + f + ')'; tb.style.borderRadius = (5 / f).toFixed(2) + 'px'; }
   $('tier-t').innerHTML = `<span dir="ltr">${pairN(S.points, 3000)}</span>`;
+  { const tl = $('tier-left'); if (tl) { const rem = 3000 - S.points; tl.textContent = rem > 0 ? (LANG === 'ar' ? `${fmtN(rem)} نقطة للفئة التالية` : `${fmtN(rem)} points to the next tier`) : ''; } } /* v58: Goal-gradient — distance to next tier, derived, no tier name invented */
   const list = $('r-list'); list.innerHTML = '';
   REWARDS.forEach(r => {
     const b = document.createElement('button');
     b.className = 'reward card'; b.disabled = S.points < r.c;
     b.innerHTML = `<span class="ri"><img decoding="async" src="${ZI(r.z)}" alt="" width="26" height="26"></span>
-      <span class="rt"><span class="t">${B(r.n)}</span><span class="d" style="display:block">${B(r.d)}</span></span>
+      <span class="rt"><span class="t">${B(r.n)}</span><span class="d" style="display:block">${B(r.d)}</span>${S.points < r.c ? `<span class="d" style="display:block">${LANG === 'ar' ? `تحتاج إلى ${fmtN(r.c - S.points)} نقطة إضافية` : `Need ${fmtN(r.c - S.points)} more points`}</span>` : ''}</span>
       <span class="rc num">${fmtN(r.c)}</span>`;
     b.onclick = () => askRedeem(r);
     list.appendChild(b);
   });
 }
+/* v58: Recognition — Pay banner for a bundle that failed on insufficient balance. Shortfall is derived (price − balance); banner clears on dismiss or when balance covers the price. */
+function syncPayPending() {
+  const el = $('pay-pending'); if (!el) return;
+  const p = S.pendingTopup; if (!p) { el.hidden = true; return; }
+  const short = Math.max(0, p.price - S.balance);
+  if (short <= 0) { S.pendingTopup = null; el.hidden = true; return; }
+  el.hidden = false;
+  $('pay-pending-text').textContent = LANG === 'ar' ? `تحتاج إلى ${fmtN(short)} ${T('syp')} إضافية لباقة ${B(p.n)}` : `You need ${fmtN(short)} ${T('syp')} more for ${B(p.n)}`;
+  $('pay-pending-topup').textContent = LANG === 'ar' ? `اشحن ${fmtN(short)} ${T('syp')}` : `Top up ${fmtN(short)} ${T('syp')}`;
+  $('pay-pending-dismiss').textContent = LANG === 'ar' ? 'إغلاق' : 'Dismiss';
+}
 function renderAmtChips() {
+  syncPayPending();
   const h = $('amt-chips'); h.innerHTML = '';
   $('pay-amt').textContent = fmtN(S.payAmt);
   [5000, 10000, 20000, 50000].forEach(a => {
@@ -4068,7 +4106,7 @@ function openBundle(bd) {
     </div>
     <p class="micro">${T('b_price_valid')}</p>
     <div class="card" style="padding:6px 16px;background:var(--glass-deep)">
-      <div class="bpop-row"><span class="k">${ar ? 'السعر' : 'Price'}</span><span class="v num">${bd.offer ? `<s>${fmtN(bd.offer.old)} ${T('syp')}</s> ` : ''}${fmtN(bd.p)} ${T('syp')}</span></div>
+      <div class="bpop-row"><span class="k">${ar ? 'السعر' : 'Price'}</span><span class="v num">${bd.offer ? `<s class="bpop-old">${fmtN(bd.offer.old)} ${T('syp')}</s> ` : ''}${fmtN(bd.p)} ${T('syp')}</span></div>
 
       ${validRow}
 
@@ -4153,7 +4191,7 @@ function openBundle(bd) {
     if (bd.activated) { closeOverlays(); return; }
     VIB(15);
     const method = S.payMethod || 'balance';
-    if (method === 'balance' && S.balance < price) { toast(ar ? 'الرصيد غير كافٍ' : 'Insufficient balance'); closeOverlays().then(() => goTab('pay')); return; } /* v46: no more warning/button/disabled state — Activate stays lit, and pressing it with low balance toasts and sends the user to Pay */
+    if (method === 'balance' && S.balance < price) { S.pendingTopup = { n: bd.n, price }; toast(ar ? 'الرصيد غير كافٍ' : 'Insufficient balance'); closeOverlays().then(() => { goTab('pay'); syncPayPending(); }); return; } /* v58: Recognition — Pay banner remembers this bundle (see syncPayPending); v46 toast-to-Pay flow otherwise unchanged */
     if (method === 'balance') S.balance -= price;
     bd.activated = true;
     bd.autoRenew = bd.renew === 'auto' ? !!pendingAuto : false;
@@ -4333,11 +4371,13 @@ function hThirdLine(e, bd) {
   }
   return '';
 }
+/* v58: Postel — search normalises spaces, dashes and Arabic digits on both sides, so 'TXN 20261025 001' finds TXN-20261025-001. Displayed/copied IDs stay exact. */
+const normSearch = s => arToLatin(s).toLowerCase().replace(/[^a-z0-9\u0600-\u06FF]/g, '');
 function hFiltered() {
-  const q = (S.hQuery || '').toLowerCase();
+  const q = normSearch(S.hQuery);
   return PURCHASES.filter(e => {
     if (S.hFilter && S.hFilter !== 'all' && e.status !== S.hFilter) return false;
-    if (q) { const bd = hBundle(e.bid); const name = bd ? B(bd.n).toLowerCase() : ''; if (!name.includes(q) && !e.txn.toLowerCase().includes(q)) return false; }
+    if (q) { const bd = hBundle(e.bid); const name = bd ? normSearch(B(bd.n)) : ''; if (!name.includes(q) && !normSearch(e.txn).includes(q)) return false; }
     return true;
   });
 }
@@ -4366,6 +4406,7 @@ function renderHistory() {
   } else rg.textContent = '';
   host.innerHTML = '';
   const list = hFiltered();
+  if (PURCHASES.length && ((S.hFilter && S.hFilter !== 'all') || (S.hQuery || '').trim())) { rg.textContent += LANG === 'ar' ? ` · ${fmtN(list.length)} من أصل ${fmtN(PURCHASES.length)} عملية شراء` : ` · ${fmtN(list.length)} of ${fmtN(PURCHASES.length)} purchases`; } /* v58: Recognition — filtered count, so a filtered view does not look like the full view */
   if (!PURCHASES.length) {
     const emp = document.createElement('div'); emp.className = 'fempty';
     emp.innerHTML = `<p class="ftitle">${T('h_empty')}</p><p class="fdesc">${T('h_empty_sub')}</p>`;
@@ -4533,12 +4574,14 @@ function bindPay() {
     e.target.value = v;
     if (v) { S.payAmt = +v; $('pay-amt').textContent = fmtN(+v); renderAmtChips(); }
   });
+  const pt = $('pay-pending-topup'); if (pt) pt.onclick = () => { const p = S.pendingTopup; if (!p) return; const short = Math.max(0, p.price - S.balance); S.payAmt = short; $('custom-amt').value = ''; $('pay-amt').textContent = fmtN(short); renderAmtChips(); };
+  const pd = $('pay-pending-dismiss'); if (pd) pd.onclick = () => { S.pendingTopup = null; syncPayPending(); };
   $('btn-pay').onclick = () => {
     const btn = $('btn-pay');
     btn.disabled = true; btn.textContent = T('pay_proc');
     setTimeout(() => {
       btn.disabled = false; btn.textContent = T('pay_now');
-      S.balance += S.payAmt; VIB(20);
+      S.balance += S.payAmt; if (S.pendingTopup && S.balance >= S.pendingTopup.price) S.pendingTopup = null; syncPayPending(); VIB(20);
       $('payok-d').textContent = `${T('pay_done')} ${fmtN(S.payAmt)} ${T('syp')} ${T('pay_done2')}`;
       openSheet($('dlg-payok'));
     }, RM.on ? 60 : 1100);
@@ -4810,7 +4853,7 @@ function wordsCur(n) { return LANG === "ar" ? wordsAr(n) + " ليرة سورية
 /* ---------- state extension (v4.0.1 defaults + saved state) ---------- */
 Object.assign(S, {
   planId: "p783", planDaysLeft: 18, activeBundle: null,
-  auto: { pay: false, recharge: false }, lines: ["0933 000 000"], curLine: 0,
+  auto: { pay: false, recharge: false }, lines: ["0933 000 000", "0965 000 00", "0964 000 000", "011 444 4444"], curLine: 0,
   paySeg: "recharge", billPlanId: "p792", billSel: [0], partial: null,
   giftPick: null, lineExpired: false, billDue: 0, _afterRecharge: null,
 });
@@ -4894,10 +4937,10 @@ function openGift() {
 }
 function renderGiftList(q) {
   const h = $('gift-list'); h.innerHTML = '';
-  const needle = (q || '').trim().toLowerCase();
+  const needle = normSearch(q);
   DBB.filter(bd => bd.id !== 'b862').forEach(bd => {
     const name = B(bd.n);
-    if (needle && !(name.toLowerCase().includes(needle) || (LANG === 'ar' ? benLineAr(bd) : benLine(bd)).toLowerCase().includes(needle))) return;
+    if (needle && !(normSearch(name).includes(needle) || normSearch(LANG === 'ar' ? benLineAr(bd) : benLine(bd)).includes(needle))) return;
     const b = document.createElement('button');
     b.className = 'planrow card' + (S.giftPick === bd.id ? ' on' : '');
     b.innerHTML = `<span class="bi"><img decoding="async" src="${ZI(bd.z)}" alt="" width="28" height="28"></span>
@@ -5478,19 +5521,23 @@ renderBell = function () {
   NOTIF_DEFS.filter(d => { try { return d.when(); } catch (e) { return false; } }).reverse().forEach(def => {
     const b = document.createElement('button');
     b.setAttribute('role', 'menuitem');
+    if (def.key === 'nobundle') b.classList.add('bell-featured');
     b.innerHTML = `<span class="dt">${T(def.t)}<span class="ds2" style="display:block">${T(def.s)}</span></span>`;
     b.onclick = () => { closeOverlays(); setTimeout(() => openAlert(def.key), 60); };
     h.insertBefore(b, h.children[1] || null);
   });
 };
 /* Number menu: real line switching + real Add-a-line (was a demo toast) */
+Object.assign(I18N.en, {line_speed:"Speed", line_adsl:"ADSL"});
+Object.assign(I18N.ar, {line_speed:"Speed", line_adsl:"ADSL"});
+function lineType(ln) { const n = normNum(ln); if (n === '933000000') return T('prepaid'); if (n === '96500000') return T('postpaid_l'); if (n === '964000000') return T('line_speed'); if (n === '114444444') return T('line_adsl'); return ''; }
 const _impRenderNum = renderNum;
 renderNum = function () {
   const h = $('dd-num'); if (!h) return;
   const nic = $('num-ic'); if (nic) nic.src = ZI('sim');
   h.innerHTML = `<p class="micro" style="padding:8px 12px 4px">${T('line_t')}</p>` +
     S.lines.map((ln, i) => `<button class="${i === S.curLine ? 'cur' : ''}" role="menuitemradio" aria-checked="${i === S.curLine}"><img decoding="async" src="${ZI('sim')}" alt="" width="26" height="26">
-      <span class="dt num" dir="ltr">${ln}${i === S.curLine ? `<span class="ds2" style="display:block">${T('cur_line')} · ${T('prepaid')}</span>` : ''}</span></button>`).join('') +
+      <span class="dt num" dir="ltr">${ln}${(() => { const ty = lineType(ln); const s = i === S.curLine ? (ty ? T('cur_line') + ' · ' + ty : T('cur_line')) : ty; return s ? `<span class="ds2" style="display:block">${s}</span>` : ''; })()}</span></button>`).join('') +
     `<button role="menuitem"><span class="dt">${T('add_line')}</span>
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>`;
   const btns = h.querySelectorAll('button');
@@ -6586,6 +6633,17 @@ function uUpdateDots() {
   pkgs.forEach((p, i) => { const r = p.getBoundingClientRect(), d = Math.abs((r.left + r.width / 2) - hc); if (d < bestD) { bestD = d; best = i; } });
   items.forEach((d, i) => d.classList.toggle('on', i === best));
 }
+/* v58: dots tap — scrolls to that package's centre (rect-delta, RTL-safe); labels via new bu_dot keys. */
+I18N.en.bu_dot = 'Go to package {n}';
+I18N.ar.bu_dot = 'انتقل إلى الباقة {n}';
+function uGoToPackage(i) {
+  const host = $('u-slots'); if (!host) return;
+  const pkgs = host.querySelectorAll('.bu-package'); const pkg = pkgs[i]; if (!pkg) return;
+  const hr = host.getBoundingClientRect(), pr = pkg.getBoundingClientRect();
+  const delta = (pr.left + pr.width / 2) - (hr.left + hr.width / 2);
+  const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  host.scrollTo({ left: host.scrollLeft + delta, behavior: smooth ? 'smooth' : 'auto' });
+}
 function uRenderDots() {
   const host = $('u-slots'), dots = $('u-dots'); if (!host || !dots) return;
   const pkgs = host.querySelectorAll('.bu-package');
@@ -6593,7 +6651,8 @@ function uRenderDots() {
   let total = 34; pkgs.forEach(pk => { total += wByMetrics[pk.getAttribute('data-metrics')] || 269; }); total += 12 * Math.max(0, pkgs.length - 1);
   const vw = host.clientWidth || 360;
   const scrollable = pkgs.length > 1 && total > vw + 1;
-  dots.innerHTML = scrollable ? Array.from(pkgs).map((_, i) => '<span class="bu-pdot' + (i === 0 ? ' on' : '') + '"></span>').join('') : '';
+  dots.innerHTML = scrollable ? Array.from(pkgs).map((_, i) => '<button type="button" class="bu-pdot' + (i === 0 ? ' on' : '') + '" aria-label="' + T('bu_dot').replace('{n}', i + 1) + '"><span class="bu-pdot-i"></span></button>').join('') : '';
+  if (scrollable) dots.querySelectorAll('.bu-pdot').forEach((d, i) => { d.onclick = () => uGoToPackage(i); });
   if (scrollable && !host.dataset.dotsBound) { host.addEventListener('scroll', uUpdateDots, { passive: true }); host.dataset.dotsBound = '1'; }
   uUpdateDots();
 }
@@ -6628,17 +6687,20 @@ function renderUCard() {
         const note = pct >= 100 ? '<div class="bu-metric-note">' + T('u_usedup') + '</div>' : (pct >= 95 ? '<div class="bu-metric-note bu-low">' + T('bu_almost') + '</div>' : '');
         return '<div class="bu-metric' + cls + '"><div class="bu-ring" style="--bu-color:' + ringCol(bkt.kind) + ';--bu-len:' + len.toFixed(2) + '"><svg viewBox="0 0 110 110" aria-hidden="true"><circle class="base" cx="55" cy="55" r="46"/><circle class="meter" cx="55" cy="55" r="46"/></svg><div class="bu-ring-label"><strong class="bu-percent">' + pctTxt + '</strong></div></div><div class="bu-consum">' + cons + '</div><div class="bu-metric-name">' + buLabel(bkt) + '</div>' + note + '</div>';
       }).join('');
-      return '<button class="bu-package' + (urgent ? ' bu-urgent' : '') + '" type="button" data-bu-bundle="' + b.id + '" data-metrics="' + b.buckets.length + '" aria-label="' + uBundleName(b) + '"><div class="bu-pkg-head"><div class="bu-pkg-name"><i class="bu-dot" style="background:var(--bu-' + (b.buckets[0] ? b.buckets[0].kind : 'data') + ')"></i>' + uBundleName(b) + '</div><div class="bu-pkg-meta"><span class="bu-expiry' + (urgent ? ' urgent' : '') + '">' + expTxt + '</span>' + (urgent ? '<span class="bu-state urgent">' + T('bu_expiring') + '</span>' : '') + '</div></div><span class="bu-info" aria-hidden="true">i</span><div class="bu-rings">' + rings + '</div></button>';
+      return '<button class="bu-package' + (urgent ? ' bu-urgent' : '') + (b.buckets.length >= 2 ? ' bu-has-corner' : '') + '" type="button" data-bu-bundle="' + b.id + '" data-metrics="' + b.buckets.length + '" aria-label="' + uBundleName(b) + '">' + (b.buckets.length >= 2 ? '<span class="bu-corner" aria-hidden="true" style="background:var(--bu-' + (b.buckets[0] ? b.buckets[0].kind : 'data') + ')"><img class="bu-corner-ic" alt="" src="' + ZI('rocket') + '"></span>' : '') + '<div class="bu-pkg-head"><div class="bu-pkg-name">' + (b.buckets.length >= 2 ? '' : '<i class="bu-dot" style="background:var(--bu-' + (b.buckets[0] ? b.buckets[0].kind : 'data') + ')"></i>') + uBundleName(b) + '</div><div class="bu-pkg-meta"><span class="bu-expiry' + (urgent ? ' urgent' : '') + '">' + expTxt + '</span>' + (urgent ? '<span class="bu-state urgent">' + T('bu_expiring') + '</span>' : '') + '</div></div><span class="bu-info" aria-hidden="true">i</span><div class="bu-rings">' + rings + '</div></button>';
     }).join('');
     sig = sorted.map(b => b.id + ':' + b.buckets.map(x => x.kind + ':' + x.remaining + '/' + x.cap).join(',') + ':' + b.expiresAt).join('|') + '#' + LANG;
   }
   host.innerHTML = html;
   uRenderDots(); /* v51: dots follow the rendered packages */
+  syncCornerTones();
   uLastSig = sig; uFirstRender = false;
   const getB = $('btn-getbundle'); if (getB) { getB.style.display = meter ? '' : 'none'; getB.textContent = T('u_getbundle'); }
   const rch = $('btn-recharge'); if (rch) rch.style.display = meter ? 'none' : '';
   uRenderBal();
 }
+function syncCornerTones() { const host = $('u-slots'); if (!host) return; host.querySelectorAll('.bu-corner').forEach(c => { const img = c.querySelector('img'); if (!img) return; const bg = getComputedStyle(c).backgroundColor; const m = bg.match(/(\d+),\s*(\d+),\s*(\d+)/); if (!m) return; const lin = v => { const s = v / 255; return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4); }; const L = 0.2126 * lin(+m[1]) + 0.7152 * lin(+m[2]) + 0.0722 * lin(+m[3]); img.src = Z('rocket', L > 0.28 ? 'INK' : 'WHITE'); }); }
+window.__syncCornerTones = syncCornerTones;
 window.__uRender = renderUCard;
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { uMqScan($('u-slots')); }); /* the Zain font landing changes every width — re-measure the marquees once it's in */
 window.__uAnim = function () { const host = $('u-slots'); if (host) host.querySelectorAll('.uc-fl, .uc-cres').forEach(f => { if (f.classList.contains('uc-cres')) f.style.insetInlineStart = (parseFloat(f.dataset.f) * 100) + '%'; else f.style.transform = 'scaleX(' + f.dataset.f + ')'; }); };
@@ -6657,33 +6719,35 @@ function openHomeBundleDetail(b) {
   const daysLeft = Math.max(1, Math.ceil((b.expiresAt - uNow()) / U_D));
   const daysTxt = ar ? (uNum(daysLeft) + ' ' + (daysLeft === 1 ? T('u_day') : T('u_days')) + ' ' + T('u_left')) : (uNum(daysLeft) + (daysLeft === 1 ? ' day remaining' : ' days remaining'));
   const iso = ms => { const d = new Date(ms); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
-  const metricCards = b.buckets.map(bkt => {
-    if (bkt.cap == null) return `<div class="card" style="padding:12px 16px;background:var(--glass-deep)"><p class="body" style="font-weight:800">${buLabel(bkt)}</p><p class="cap">${ar ? 'غير محدود' : 'Unlimited'}</p></div>`;
-    const used = Math.max(0, bkt.cap - (bkt.remaining || 0));
-    const pct = bkt.cap ? Math.max(0, Math.min(100, Math.round(used / bkt.cap * 100))) : 0;
+  const metricRows = b.buckets.map(bkt => {
+    if (bkt.cap == null) return `<div class="bpop-row" style="flex-direction:column;align-items:flex-start;gap:2px"><p class="body" style="font-weight:800">${buLabel(bkt)}</p><p class="cap">${ar ? 'غير محدود' : 'Unlimited'}</p></div>`;
     const u = unitFor(bkt);
-    return `<div class="card" style="padding:12px 16px;background:var(--glass-deep)"><p class="body" style="font-weight:800">${buLabel(bkt)}</p><p class="cap">${ar ? 'المستخدم' : 'Used'}: ${fmtN(used)}${u} ${ar ? 'من' : 'of'} ${fmtN(bkt.cap)}${u} (${pct}%) · ${ar ? 'المتبقي' : 'Remaining'}: ${fmtN(bkt.remaining)}${u}</p></div>`;
+    return `<div class="bpop-row" style="flex-direction:column;align-items:flex-start;gap:2px"><p class="body" style="font-weight:800">${buLabel(bkt)}</p><p class="cap">${ar ? 'المتبقي' : 'Remaining'}: ${fmtN(bkt.remaining)}${u}</p></div>`;
   }).join('');
   if (b.autoRenew === undefined) b.autoRenew = true;
   const autoTxt = b.autoRenew ? (ar ? 'مفعّل · يتجدد تلقائياً عند الانتهاء' : 'Enabled · Renews automatically at expiry') : (ar ? 'معطّل' : 'Disabled');
-  const toggleTxt = b.autoRenew ? (ar ? 'إيقاف' : 'Turn off') : (ar ? 'تشغيل' : 'Turn on');
   $('hist-body').innerHTML = `
-    <p class="micro">${ar ? 'تفاصيل الباقة' : 'Bundle Details'}</p>
     <div style="display:flex;gap:14px;align-items:center">
       <span class="bi" style="width:60px;height:60px;border-radius:18px;background:var(--glass-deep);border:1px solid var(--glass-brd);display:flex;align-items:center;justify-content:center">${icon ? `<img decoding="async" src="${icon}" alt="" width="32" height="32">` : ''}</span>
       <div><p class="st" id="sh-hist-t" style="margin-bottom:6px">${name}</p><p style="margin-top:2px"><span class="hpill" style="background:var(--glass-deep);border:1px solid var(--glass-brd);color:var(--ink)">${daysTxt}</span></p></div>
     </div>
+    <p class="micro">${ar ? 'الصلاحية' : 'Validity'}</p>
+    <div class="card" style="padding:6px 16px;background:var(--glass-deep)">
+      <div class="bpop-row"><span class="k">${ar ? 'تاريخ التفعيل' : 'Activated on'}</span><span class="v">${hDate(iso(b.activatedAt))}</span></div>
+      <div class="bpop-row"><span class="k">${ar ? 'صالح حتى' : 'Valid until'}</span><span class="v">${hDate(iso(b.expiresAt))}</span></div>
+    </div>
+    <p class="micro">${ar ? 'الاستخدام' : 'Usage'}</p>
+    <div class="card" style="padding:6px 16px;background:var(--glass-deep)">
+      ${metricRows}
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:14px">
+      <div><p style="font-weight:800">${T('b_renew')}</p><p class="cap" style="color:var(--ink-soft)">${autoTxt}</p></div>
+      <button class="bswitch" id="h-renew-toggle" type="button" role="switch" aria-checked="${b.autoRenew ? 'true' : 'false'}" aria-label="${T('b_renew')}"><span class="knob"></span></button>
+    </div>
     <div class="srow">
-      <div class="card" style="flex:1;padding:12px 16px;background:var(--glass-deep)"><p class="micro" style="margin-bottom:4px">${ar ? 'تاريخ التفعيل' : 'Activated on'}</p><p class="body" style="font-weight:800">${hDate(iso(b.activatedAt))}</p></div>
-      <div class="card" style="flex:1;padding:12px 16px;background:var(--glass-deep)"><p class="micro" style="margin-bottom:4px">${ar ? 'صالح حتى' : 'Valid until'}</p><p class="body" style="font-weight:800">${hDate(iso(b.expiresAt))}</p></div>
+      <button class="btn" id="h-activate-again" type="button">${ar ? 'إعادة التفعيل' : 'Activate Again'}</button>
     </div>
-    ${metricCards}
-    <div class="card" style="padding:12px 16px;background:var(--glass-deep);display:flex;justify-content:space-between;align-items:center;gap:12px">
-      <div><p class="body" style="font-weight:800">${T('b_renew')}</p><p class="cap">${autoTxt}</p></div>
-      <button class="btn ghost" id="h-renew-toggle" type="button" style="min-height:36px;padding:0 16px;font-size:14px;flex:none">${toggleTxt}</button>
-    </div>
-    <button class="btn block" id="h-activate-again" type="button">${ar ? 'إعادة التفعيل' : 'Activate Again'}</button>
-    <p class="cap" style="text-align:center">${ar ? 'يمكنك تفعيل هذه الباقة مجدداً بينما هي مفعّلة.' : 'You can activate this bundle again while it is active.'}</p>`;
+    <p class="cap" style="text-align:center;color:var(--ink-faint)">${ar ? 'يمكنك تفعيل هذه الباقة مجدداً بينما هي مفعّلة.' : 'You can activate this bundle again while it is active.'}</p>`;
   if (typeof openEl === 'undefined' || openEl !== $('sh-hist')) openSheet($('sh-hist'));
   const tg = $('h-renew-toggle');
   if (tg) tg.onclick = () => { b.autoRenew = !b.autoRenew; openHomeBundleDetail(b); };
